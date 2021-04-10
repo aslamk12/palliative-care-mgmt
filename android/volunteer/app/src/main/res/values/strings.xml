@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">volunteer</string>
+    <string name="txt_mobile_number">MOBILE NUMBER</string>
+    <string name="register2">New User? <u>Click to Register</u></string>
+    <string name="forget_password_email_entry">Enter your registered email id here</string>
+    <string name="submit">Submit</string>
+    <string name="login">LOGIN</string>
+    <string name="register">REGISTER</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="signup_login_hint">Already have an account? Sign In</string>
+    <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
+</resources>

@@ -35,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
         mobile=(EditText)findViewById(R.id.et_mob);
         password=(EditText)findViewById(R.id.et_pass);
         login=(Button)findViewById(R.id.btn_login);
-        if(SharedPrefManager.getInstance(this).isLoggedIn())
-        {
-            Intent homeIntent = new Intent(MainActivity.this,HomeActivity.class);
-            startActivity(homeIntent);
-        }
+//        if(SharedPrefManager.getInstance(this).isLoggedIn())
+//        {
+//            Intent homeIntent = new Intent(MainActivity.this,HomeActivity.class);
+//            startActivity(homeIntent);
+//        }
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override

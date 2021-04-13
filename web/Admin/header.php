@@ -119,7 +119,7 @@ include "../connection.php";
 
 
                     <li>
-                        <a  href="All_patient.php" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Patient</span></a>
+                        <a  href="view_patient.php" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Patient</span></a>
                     </li>
 
                     <li>

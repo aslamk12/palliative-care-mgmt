@@ -140,9 +140,9 @@ public class RegisterActivity extends AppCompatActivity {
     private void registerUser()
     {
         name = edt_name.getText().toString().trim();
-        dob = edt_dob.getText().toString().trim();
         mobile = et_mob.getText().toString().trim();
         place = et_place.getText().toString().trim();
+        dob = edt_dob.getText().toString().trim();
         panchayath = et_panchayath.getText().toString().trim();
         address = et_address.getText().toString().trim();
         password = et_pass.getText().toString().trim();
@@ -193,8 +193,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                         JSONObject userJson = obj.getJSONObject("user");
 
-                        Volunteer volunteer new Volunteer(
-                                userJson.getInt("v_id"),
+                        Volunteer volunteer = new Volunteer(
+                                userJson.getInt("vid"),
                                 userJson.getString("name"),
                                 userJson.getString("mobile"),
                                 userJson.getString("place"),
@@ -205,13 +205,13 @@ public class RegisterActivity extends AppCompatActivity {
 
                         SharedPrefManager.getInstance(getApplicationContext()).volunteerLogin(volunteer);
 
-                        Intent verifyIntent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent verifyIntent = new Intent(RegisterActivity.this, MainActivity.class);
                         startActivity(verifyIntent);
-
+                        finish();
                     }
                     else
                     {
-                        Toast.makeText(getApplicationContext(), "email already registered.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "mobile already registered.", Toast.LENGTH_SHORT).show();
                     }
                 }
                 catch (JSONException e)

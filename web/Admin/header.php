@@ -112,7 +112,7 @@ include "../connection.php";
                         <a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Staffs</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
                             <li><a title="add/view Nurse" href="add_nurse.php"><span class="mini-sub-pro">Add Nurse</span></a></li>
-                            <li><a title="view Volunteer" href="view_volunteer.php"><span class="mini-sub-pro">View Volunteer</span></a></li>
+                            <li><a title="view Volunteer" href="manage_volunteer.php"><span class="mini-sub-pro">View Volunteer</span></a></li>
                         </ul>
                     </li>
                     <li><a title="Add Equipments" href="add_facility.php"><span class="educate-icon educate-event icon-wrap sub-icon-mg"></span><span class="mini-click-non">Equipments</span></a></li>

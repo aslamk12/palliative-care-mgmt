@@ -34,7 +34,7 @@ $sql=mysqli_query($con,"select * from patient");
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-status-wrap">
                     <?php
-                    $sq=mysqli_query($con,"select * from login WHERE type='patient' and status='pending'");
+                    $sq=mysqli_query($con,"select * from login WHERE type='patient' and status='assigned' or status='pending' ");
                     if(mysqli_num_rows($sq)==0){
                         echo "<h2 style='margin-left: 35%;color:coral;font-family: Times;font-style: italic;font-size: 39px;'>No details to show</h2><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
                     }else {
@@ -62,6 +62,7 @@ $sql=mysqli_query($con,"select * from patient");
                                                         <th data-field="ward" data-editable="true">Ward</th>
                                                         <th data-field="address" data-editable="true">Address</th>
                                                         <th data-field="pincode" data-editable="true">Pincode</th>
+                                                        <th data-field="Status" data-editable="true">Status</th>
 
                                                         <th data-field="approve">Action</th>
                                                         <th data-field="delete">Delete</th>
@@ -70,7 +71,7 @@ $sql=mysqli_query($con,"select * from patient");
                                                     <tbody style="text-transform: capitalize">
                                                     <?php
                                                     $i = 1;
-                                                    $view = mysqli_query($con, "select *from patient inner join login on patient.mobile=login.uname where login.status='pending'");
+                                                    $view = mysqli_query($con, "select *from patient inner join login on patient.mobile=login.uname where login.status='pending' or login.status='assigned'");
                                                     while ($row = mysqli_fetch_array($view)) {
                                                         ?>
                                                         <tr>
@@ -84,6 +85,7 @@ $sql=mysqli_query($con,"select * from patient");
                                                             <td><?php echo $row['ward'] ?></td>
                                                             <td><?php echo $row['address'] ?></td>
                                                             <td><?php echo $row['pincode'] ?></td>
+                                                            <td><?php echo $row['status'] ?></td>
                                                             <td>
                                                                 <a href="assign_volunteer.php?id=<?php echo $row['mobile'] ?>"
                                                                    data-toggle="tooltip" title="Edit"

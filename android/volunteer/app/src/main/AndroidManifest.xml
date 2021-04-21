@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Volunteer"
         android:usesCleartextTraffic="true">
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".SendReportActivity"></activity>
+        <activity android:name=".PatientActivty" />
+        <activity android:name=".HomeActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

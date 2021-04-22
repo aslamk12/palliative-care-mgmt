@@ -62,7 +62,8 @@ public class PatientlistAdapter extends RecyclerView.Adapter<PatientlistAdapter.
 
                 intent = new Intent(context, SendReportActivity.class);
                 intent.putExtra("assv_id",patientlist.getAssv_id());
-                intent.putExtra("p_id",patientlist.getPid());
+                intent.putExtra("pid",patientlist.getPid());
+                intent.putExtra("pname",patientlist.getPat_name());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mCtx.startActivity(intent);
             }

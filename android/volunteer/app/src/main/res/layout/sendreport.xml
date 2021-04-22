@@ -5,5 +5,150 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SendReportActivity">
+    <TextView
+        android:id="@+id/caption_sr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="Send Report"
+        android:textColor="@android:color/black"
+        android:textAlignment="center"
+        android:textSize="23sp"/>
+
+    <TableLayout
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/caption_sr"
+        android:id="@+id/req_table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+
+        <TableRow
+            android:layout_margin="10dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="23sp"
+                android:layout_margin="10dp" />
+
+            <TextView
+                android:id="@+id/tv_patientname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rahul"
+                android:textColor="@android:color/black"
+                android:textSize="23sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_margin="10dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Disease"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="23sp"
+                android:layout_margin="10dp" />
+
+            <EditText
+                android:id="@+id/et_disease"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_margin="10dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Medicines"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="23sp"
+                android:layout_margin="10dp" />
+
+            <EditText
+                android:id="@+id/et_medicines"
+                android:layout_width="225dp"
+                android:layout_height="100dp"
+                android:textColor="@android:color/black"
+                android:textSize="23sp"
+                android:inputType="text|textMultiLine"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_margin="10dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="23sp"
+                android:layout_margin="10dp" />
+
+            <EditText
+                android:id="@+id/et_descp"
+                android:layout_width="225dp"
+                android:layout_height="100dp"
+                android:textColor="@android:color/black"
+                android:textSize="23sp"
+                android:inputType="text|textMultiLine"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"/>
+
+        </TableRow>
+
+    </TableLayout>
+
+
+    <Button
+        android:id="@+id/btn_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/buttonstyle"
+        android:text="Upload report"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/req_table" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

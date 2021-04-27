@@ -131,7 +131,8 @@ public class MainActivity extends AppCompatActivity {
                                 userJson.getString("pincode"),
                                 userJson.getString("panchayath"),
                                 userJson.getString("ward"),
-                                userJson.getString("mobile")
+                                userJson.getString("mobile"),
+                                userJson.getString("disease")
                         );
 
                         SharedPrefManager.getInstance(getApplicationContext()).patientLogin(patient);

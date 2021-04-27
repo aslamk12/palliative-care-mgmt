@@ -18,15 +18,16 @@ import java.util.HashMap;
 import android.os.Bundle;
 
 public class Register2Activtiy extends AppCompatActivity {
-    EditText et_mob, et_pass, et_cpass;
+    EditText et_mob, et_pass, et_cpass, et_disease;
     Button btn_reg;
-    String name,dob,address,place,pincode,gender,panchayath,ward,mob,password;
+    String name,dob,address,place,pincode,gender,panchayath,ward,mob,disease,password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register2);
         et_mob = findViewById(R.id.reg_et_mob);
+        et_disease = findViewById(R.id.reg_et_disease);
         et_pass = findViewById(R.id.reg_et_pwd);
         et_cpass = findViewById(R.id.reg_et_cpwd);
 
@@ -41,6 +42,11 @@ public class Register2Activtiy extends AppCompatActivity {
     }
     private void validate()
     {
+        if(et_disease.getText().toString().isEmpty())
+        {
+            et_disease.setError("Please enter disaese");
+            et_disease.requestFocus();
+        }
         if(et_mob.getText().toString().isEmpty())
         {
             et_mob.setError("Please enter your mobile number.");
@@ -85,6 +91,7 @@ public class Register2Activtiy extends AppCompatActivity {
         pincode = getIntent().getExtras().getString("pincode");
         panchayath = getIntent().getExtras().getString("panchayath");
         ward = getIntent().getExtras().getString("ward");
+        disease = et_disease.getText().toString().trim();
         mob = et_mob.getText().toString().trim();
         password = et_pass.getText().toString().trim();
         class RegisterUser extends AsyncTask<Void, Void, String>
@@ -106,6 +113,7 @@ public class Register2Activtiy extends AppCompatActivity {
                 params.put("pincode", pincode);
                 params.put("panchayath", panchayath);
                 params.put("ward", ward);
+                params.put("disease", disease);
                 params.put("mobile", mob);
                 params.put("password", password);
 
@@ -147,7 +155,8 @@ public class Register2Activtiy extends AppCompatActivity {
                                 userJson.getString("pincode"),
                                 userJson.getString("panchayath"),
                                 userJson.getString("ward"),
-                                userJson.getString("mobile")
+                                userJson.getString("mobile"),
+                                userJson.getString("disease")
                         );
 
                         SharedPrefManager.getInstance(getApplicationContext()).patientLogin(patient);

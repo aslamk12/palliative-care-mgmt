@@ -3,9 +3,9 @@ package com.example.patient;
 public class Patient {
     private int pid;
 
-    private String pname,dob,gender,address,place,pincode,panchayath,ward,mobile;
+    private String pname,dob,gender,address,place,pincode,panchayath,ward,mobile,disease;
 
-    public Patient(int pid, String pname, String dob, String gender, String address, String place, String pincode, String panchayath, String ward, String mobile) {
+    public Patient(int pid, String pname, String dob, String gender, String address, String place, String pincode, String panchayath, String ward, String mobile, String disease) {
         this.pid = pid;
         this.pname = pname;
         this.dob = dob;
@@ -16,6 +16,7 @@ public class Patient {
         this.panchayath = panchayath;
         this.ward = ward;
         this.mobile = mobile;
+        this.disease = disease;
     }
 
     public int getPid() {
@@ -57,4 +58,5 @@ public class Patient {
     public String getMobile() {
         return mobile;
     }
+    public String getDisease() { return disease; }
 }

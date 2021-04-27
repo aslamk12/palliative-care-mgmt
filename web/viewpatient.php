@@ -7,10 +7,10 @@ if (isTheseParametersAvailable(array('vid'))) {
     $vid = $_POST['vid'];
     $status='pending';
 
-    $stmt = $conn->prepare("SELECT assv_id,pid,pname,mobile,dob,gender,place,panchayath,ward,address FROM assign_volunteer inner join patient on assign_volunteer.patient=patient.pid where assign_volunteer.volunteer=? and assign_volunteer.ass_status=?");
+    $stmt = $conn->prepare("SELECT assv_id,pid,pname,gender,disease FROM assign_volunteer inner join patient on assign_volunteer.patient=patient.pid where assign_volunteer.volunteer=? and assign_volunteer.ass_status=?");
     $stmt->bind_param("ss",$vid,$status);
     $stmt->execute();
-    $stmt->bind_result( $assv_id,$pid,$pname,$mobile,$dob,$gender,$place,$panchayath,$ward,$address);
+    $stmt->bind_result( $assv_id,$pid,$pname,$gender,$disease);
     $patients = array();
     while ($stmt->fetch()) {
         $temp = array();
@@ -18,13 +18,11 @@ if (isTheseParametersAvailable(array('vid'))) {
         $temp['assv_id'] = $assv_id;
         $temp['pid'] = $pid;
         $temp['pname'] = $pname;
-        $temp['pmobile'] = $mobile;
-        $temp['pdob'] = $dob;
         $temp['pgender'] = $gender;
-        $temp['pplace'] = $place;
-        $temp['ppanchayath'] = $panchayath;   
-        $temp['paddress'] = $address;        
-        $temp['pward'] = $ward;      
+        $temp['pdisease'] = $disease;
+
+
+
 
         array_push($patients, $temp);
     }

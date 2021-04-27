@@ -20,7 +20,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent regIntent = new Intent(HomeActivity.this,PatientActivty.class);
+                Intent regIntent = new Intent(HomeActivity.this,PatientVerificationActivity.class);
                 startActivity(regIntent);
 
             }

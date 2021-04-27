@@ -80,15 +80,8 @@ public class PatientActivty extends AppCompatActivity {
                                 users.getInt("assv_id"),
                                 users.getInt("pid"),
                                 users.getString("pname"),
-                                users.getString("pmobile"),
-                                users.getString("pdob"),
                                 users.getString("pgender"),
-                                users.getString("pplace"),
-                                users.getString("ppanchayath"),
-                                users.getString("paddress"),
-                                users.getInt("pward")
-
-
+                                users.getString("pdisease")
                                 ));
                     }
 

@@ -22,13 +22,38 @@
         android:textStyle="bold"
         android:textAlignment="center"
         android:textSize="25sp"/>
+    <TextView
+        android:id="@+id/reg_disease"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/caption_next"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:text="Disease"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold|italic"/>
+
+    <EditText
+        android:id="@+id/reg_et_disease"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/reg_disease"
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/reg_mob"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/caption_next"
+        app:layout_constraintTop_toBottomOf="@id/reg_et_disease"
         android:layout_marginTop="30dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"

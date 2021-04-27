@@ -12,33 +12,30 @@ import android.view.ContextMenu;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
-
-import java.util.HashMap;
 import java.util.List;
 
-public class PatientlistAdapter extends RecyclerView.Adapter<PatientlistAdapter.PatientlistViewHolder> {
+public class SRPatientlistAdapter extends RecyclerView.Adapter<SRPatientlistAdapter.SRPatientlistViewHolder> {
     private Context mCtx;
     private List<Patientlist> patientlists;
 
 
-    public PatientlistAdapter(Context mCtx, List<Patientlist> patientlists) {
+    public SRPatientlistAdapter(Context mCtx, List<Patientlist> patientlists) {
         this.mCtx = mCtx;
         this.patientlists = patientlists;
     }
 
     @NonNull
     @Override
-    public PatientlistAdapter.PatientlistViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SRPatientlistAdapter.SRPatientlistViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.patientlist, null);
 
-        return new PatientlistAdapter.PatientlistViewHolder(view);
+        return new SRPatientlistAdapter.SRPatientlistViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PatientlistAdapter.PatientlistViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull SRPatientlistAdapter.SRPatientlistViewHolder holder, final int position) {
 
         Patientlist patientlist = patientlists.get(position);
 
@@ -46,7 +43,7 @@ public class PatientlistAdapter extends RecyclerView.Adapter<PatientlistAdapter.
         holder.tv_patname.setText(patientlist.getPat_name());
         holder.tv_gender.setText(patientlist.getPat_gender());
         holder.tv_disease.setText(patientlist.getPat_disease());
-        holder.viewmore.setOnClickListener(new View.OnClickListener() {
+        holder.sendreport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -72,20 +69,20 @@ public class PatientlistAdapter extends RecyclerView.Adapter<PatientlistAdapter.
         return patientlists.size();
     }
 
-    class PatientlistViewHolder extends RecyclerView.ViewHolder {
+    class SRPatientlistViewHolder extends RecyclerView.ViewHolder {
 
         private final Context context;
         TextView tv_patname, tv_gender, tv_disease;
-        Button viewmore;
+        Button sendreport;
 
-        public PatientlistViewHolder(View itemView) {
+        public SRPatientlistViewHolder(View itemView) {
             super(itemView);
 
             context = itemView.getContext();
-            tv_patname = itemView.findViewById(R.id.tv_patname_real);
-            tv_gender = itemView.findViewById(R.id.tv_gender_real);
-            tv_disease = itemView.findViewById(R.id.tv_disease_real);
-            viewmore = itemView.findViewById(R.id.viewmore);
+            tv_patname = itemView.findViewById(R.id.tv_spatname_real);
+            tv_gender = itemView.findViewById(R.id.tv_sgender_real);
+            tv_disease = itemView.findViewById(R.id.tv_sdisease_real);
+            sendreport = itemView.findViewById(R.id.sendreport);
         }
 
 

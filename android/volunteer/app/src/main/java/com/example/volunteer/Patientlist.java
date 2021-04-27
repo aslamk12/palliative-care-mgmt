@@ -2,9 +2,9 @@ package com.example.volunteer;
 
 public class Patientlist {
     int pid,vid,assv_id,ward;
-    String pat_name,pat_mobile,pat_dob,pat_gender,pat_place,pat_panchayath,pat_address;
+    String pat_name,pat_mobile,pat_dob,pat_gender,pat_place,pat_panchayath,pat_address,pat_disease;
 
-    public Patientlist(int assv_id, int pid,  String pat_name, String pat_mobile, String pat_dob, String pat_gender, String pat_place, String pat_panchayath, String pat_address, int ward) {
+    public Patientlist(int assv_id, int pid,  String pat_name, String pat_mobile, String pat_dob, String pat_gender, String pat_place, String pat_panchayath, String pat_address, String pat_disease, int ward) {
         this.assv_id = assv_id;
         this.pid = pid;
         this.pat_name = pat_name;
@@ -14,6 +14,7 @@ public class Patientlist {
         this.pat_place = pat_place;
         this.pat_panchayath = pat_panchayath;
         this.pat_address = pat_address;
+        this.pat_disease = pat_disease;
         this.ward = ward;
 
     }
@@ -53,5 +54,28 @@ public class Patientlist {
         return pat_address;
     }
 
+    public String getPat_disease() { return pat_disease; }
+
     public int getWard() { return ward; }
+
+    public Patientlist( int assv_id,int pid, String pat_name, String pat_gender, String pat_disease) {
+        this.assv_id = assv_id;
+        this.pid = pid;
+        this.pat_name = pat_name;
+        this.pat_gender = pat_gender;
+        this.pat_disease = pat_disease;
+    }
+
+    public Patientlist(int pid, int ward, String pat_name, String pat_mobile, String pat_dob, String pat_gender, String pat_place, String pat_panchayath, String pat_address, String pat_disease) {
+        this.pid = pid;
+        this.ward = ward;
+        this.pat_name = pat_name;
+        this.pat_mobile = pat_mobile;
+        this.pat_dob = pat_dob;
+        this.pat_gender = pat_gender;
+        this.pat_place = pat_place;
+        this.pat_panchayath = pat_panchayath;
+        this.pat_address = pat_address;
+        this.pat_disease = pat_disease;
+    }
 }

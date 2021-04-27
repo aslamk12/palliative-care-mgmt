@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
@@ -22,19 +20,19 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_patname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
-            android:text="Name: "
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:textColor="@color/teal_700"/>
             <TextView
-                android:id="@+id/tv_patname_real"
+                android:id="@+id/tv_spatname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:text="Name: "
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="@color/teal_700"/>
+            <TextView
+                android:id="@+id/tv_spatname_real"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -50,21 +48,21 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_gender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginRight="15dp"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:text="Gender: "
-            android:textColor="@color/teal_700"/>
             <TextView
-                android:id="@+id/tv_gender_real"
+                android:id="@+id/tv_sgender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="Gender: "
+                android:textColor="@color/teal_700"/>
+            <TextView
+                android:id="@+id/tv_sgender_real"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
@@ -80,21 +78,21 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_disease"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="80dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginRight="15dp"
-            android:textSize="18dp"
-            android:text="Disease: "
-            android:textStyle="bold"
-            android:textColor="@color/teal_700"/>
             <TextView
-                android:id="@+id/tv_disease_real"
+                android:id="@+id/tv_sdisease"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="80dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:textSize="18dp"
+                android:text="Disease: "
+                android:textStyle="bold"
+                android:textColor="@color/teal_700"/>
+            <TextView
+                android:id="@+id/tv_sdisease_real"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"
@@ -104,7 +102,7 @@
                 android:textColor="@color/teal_700"/>
         </LinearLayout>
         <Button
-            android:id="@+id/viewmore"
+            android:id="@+id/sendreport"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -112,11 +110,10 @@
             android:layout_marginTop="110dp"
             android:layout_marginEnd="15dp"
             android:layout_marginRight="15dp"
-            android:text="View Details"
+            android:text="Send Report"
             android:textStyle="bold"
             android:background="@drawable/buttonstyle"/>
 
     </androidx.cardview.widget.CardView>
-
 
 </RelativeLayout>

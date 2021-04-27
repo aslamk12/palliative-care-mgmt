@@ -25,7 +25,7 @@
             android:textSize="20sp"
             android:textColor="#fff"
             android:text="Santhwanam Pain And Palliative Care Edappal"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp" />
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

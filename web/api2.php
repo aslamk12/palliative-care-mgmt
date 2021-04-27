@@ -10,7 +10,7 @@ if (isset($_GET['apicall']))
     {
         case 'signup':
 
-         if(isTheseParametersAvailable(array('pname','dob','gender','address','place','pincode','panchayath','ward','mobile','password')))
+         if(isTheseParametersAvailable(array('pname','dob','gender','address','place','pincode','panchayath','ward','disease','mobile','password')))
             {
                 $pname = $_POST['pname'];
                 $dob = $_POST['dob'];
@@ -20,6 +20,7 @@ if (isset($_GET['apicall']))
                 $pincode = $_POST['pincode'];
                 $panchayath = $_POST['panchayath'];
                 $ward = $_POST['ward'];
+                $disease = $_POST['disease'];
                 $mobile = $_POST['mobile'];
                 $password = $_POST['password'];
                 $type="patient";
@@ -38,18 +39,18 @@ if (isset($_GET['apicall']))
                 }
                 else
                 {
-                    $stmt = $conn->prepare("INSERT INTO patient ( pname,mobile,dob,gender,place,panchayath,ward,address,pincode ) VALUES (?,?,?,?,?,?,?,?,?)");
-                    $stmt->bind_param("sssssssss",$pname,$mobile,$dob,$gender,$place,$panchayath,$ward,$address,$pincode);
+                    $stmt = $conn->prepare("INSERT INTO patient ( pname,mobile,dob,gender,place,panchayath,ward,address,pincode,disease ) VALUES (?,?,?,?,?,?,?,?,?,?)");
+                    $stmt->bind_param("ssssssssss",$pname,$mobile,$dob,$gender,$place,$panchayath,$ward,$address,$pincode,$disease);
                     $stmt1 = $conn->prepare("INSERT INTO login (uname,password,type,status) VALUES (?,?,?,?)");
                     $stmt1->bind_param("ssss",$mobile,$password,$type,$status);
 
 
                     if ($stmt->execute() && $stmt1->execute() )
                     {
-                        $stmt = $conn->prepare("SELECT pid, pname, mobile,  dob, gender, place, panchayath, ward, address, pincode from patient where mobile=?" );
+                        $stmt = $conn->prepare("SELECT pid, pname, mobile,  dob, gender, place, panchayath, ward, address, pincode, disease from patient where mobile=?" );
                         $stmt->bind_param("s",$mobile);
                         $stmt->execute();
-                        $stmt->bind_result($pid,$pname, $mobile,  $dob, $gender, $place, $panchayath, $ward, $address, $pincode);
+                        $stmt->bind_result($pid,$pname, $mobile,  $dob, $gender, $place, $panchayath, $ward, $address, $pincode, $disease);
                         $stmt->fetch();
 
                         $user = array
@@ -64,6 +65,7 @@ if (isset($_GET['apicall']))
                             'panchayath'=>$panchayath,
                             'ward'=>$ward,
                             'mobile'=>$mobile,
+                            'disease'=>$disease,
                         );
 
                         $stmt->close();
@@ -92,10 +94,10 @@ if (isset($_GET['apicall']))
                 $stmt->store_result();
                 if ($stmt->num_rows > 0)
                 {
-                    $stmt1 = $conn->prepare("SELECT pid, pname, mobile,  dob, gender, place, panchayath, ward, address, pincode from patient where mobile=?" );
+                    $stmt1 = $conn->prepare("SELECT pid, pname, mobile,  dob, gender, place, panchayath, ward, address, pincode, disease from patient where mobile=?" );
                     $stmt1->bind_param("s",$mobile);
                     $stmt1->execute();
-                    $stmt1->bind_result($pid,$pname, $mobile,  $dob, $gender, $place, $panchayath, $ward, $address, $pincode);
+                    $stmt1->bind_result($pid,$pname, $mobile,  $dob, $gender, $place, $panchayath, $ward, $address, $pincode, $disease);
                     $stmt1->fetch();
 
                     $user = array
@@ -110,6 +112,7 @@ if (isset($_GET['apicall']))
                             'panchayath'=>$panchayath,
                             'ward'=>$ward,
                             'mobile'=>$mobile,
+                            'disease'=>$disease,
                     );
 
                     $response['error'] = false;

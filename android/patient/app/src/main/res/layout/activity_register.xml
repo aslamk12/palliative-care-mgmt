@@ -57,7 +57,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-        android:text="DOB"
+        android:text="Date Of Birth"
         android:textSize="20sp"
         android:textColor="@android:color/white"
         android:textStyle="bold|italic"/>
@@ -93,6 +93,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reg_gender"
         android:layout_margin="20dp"
+        android:dropDownSelector="@color/white"
         android:entries="@array/spinneritems">
 
     </Spinner>
@@ -133,7 +134,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-        android:text="place"
+        android:text="Place"
         android:textSize="20sp"
         android:textColor="@android:color/white"
         android:textStyle="bold|italic"/>
@@ -185,7 +186,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-        android:text="place"
+        android:text="Panchayath"
         android:textSize="20sp"
         android:textColor="@android:color/white"
         android:textStyle="bold|italic"/>

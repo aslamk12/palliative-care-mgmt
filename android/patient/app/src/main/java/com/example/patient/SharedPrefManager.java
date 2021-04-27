@@ -15,6 +15,7 @@ public class SharedPrefManager {
     private static final String KEY_PANCHAYATH = "keyuserpanchayath";
     private static final String KEY_WARD = "keyward";
     private static final String KEY_MOBILE = "keymobile";
+    private static final String KEY_DISEASE = "keydisease";
     private static final String KEY_PID = "keypid";
 
     private static SharedPrefManager mInstance;
@@ -49,6 +50,7 @@ public class SharedPrefManager {
         editor.putString(KEY_PANCHAYATH, patient.getPanchayath());
         editor.putString(KEY_WARD, patient.getWard());
         editor.putString(KEY_MOBILE, patient.getMobile());
+        editor.putString(KEY_DISEASE, patient.getDisease());
         editor.apply();
     }
 
@@ -71,7 +73,8 @@ public class SharedPrefManager {
                 sharedPreferences.getString(KEY_PINCODE,null),
                 sharedPreferences.getString(KEY_PANCHAYATH,null),
                 sharedPreferences.getString(KEY_WARD,null),
-                sharedPreferences.getString(KEY_MOBILE,null)
+                sharedPreferences.getString(KEY_MOBILE,null),
+                sharedPreferences.getString(KEY_DISEASE,null)
         );
     }
 

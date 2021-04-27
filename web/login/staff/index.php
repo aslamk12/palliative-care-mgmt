@@ -41,7 +41,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					<form action="../../Nurse/login.php" method="post">
 
 
-						<input placeholder="Mobile" name="email" class="user" type="email" required="">
+						<input placeholder="Mobile" name="mobile" class="user" type="number" required="">
 
 						<input  placeholder="Password" name="password" class="pass" type="password" required="">
 

@@ -91,18 +91,18 @@ include "../connection.php";
 
                     <li><a title="Assigned patients" href="ass_pat_view.php" aria-expanded="false"><i class="fa fa-users icon-wrap sub-icon-mg" aria-hidden="true"></i> <span class="mini-click-non">Assigned Patients</span></a></li>
 
-                    <li><a title="facility request" href="facility_request.php" aria-expanded="false"><i class="fa fa-user-plus icon-wrap sub-icon-mg" aria-hidden="true"></i> <span class="mini-click-non">Facility Request</span></a></li>
-
-                    <li><a title="service request" href="service_request.php" aria-expanded="false"><i class="fa fa-user-plus icon-wrap sub-icon-mg" aria-hidden="true"></i> <span class="mini-click-non">Service Request</span></a></li>
+                    <li><a title="edit profile" href="edit_profile.php" aria-expanded="false"><i class="fa fa-user-plus icon-wrap sub-icon-mg" aria-hidden="true"></i> <span class="mini-click-non">Edit Profile</span></a></li>
 
                     <li>
-                        <a class="has-arrow" href="" aria-expanded="false"><i class="fa big-icon fa-bell icon-wrap"></i> <span class="mini-click-non">Alert Notification</span></a>
+                        <a class="has-arrow" href="" aria-expanded="false"><i class="fa big-icon fa-bell icon-wrap"></i> <span class="mini-click-non">Work Report</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Add alert msgs" href="add_notification.php"><i class="fa fa-arrow-right sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Add Details</span></a></li>
-                            <li><a title="View alert msgs" href="view_notification.php"><i class="fa fa-arrow-right sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">View Details</span></a></li>
+                            <li><a title="Add report" href="add_report.php"><i class="fa fa-arrow-right sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Add Report</span></a></li>
+                            <li><a title="View report" href="view_report.php"><i class="fa fa-arrow-right sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">View Report</span></a></li>
                         </ul>
                     </li>
-        </ul>
+                    <li><a title="logout" href="logout.php" aria-expanded="false"><i class="fa fa-user-plus icon-wrap sub-icon-mg" aria-hidden="true"></i> <span class="mini-click-non">Logout</span></a></li>
+
+                </ul>
             </nav>
         </div>
     </nav>
@@ -152,7 +152,7 @@ include "../connection.php";
 
                                             <li class="nav-item">
                                                 <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-                                                    <span class="admin-name" style="text-transform: capitalize"><?php echo $rz['nrs_name'] ?></span>
+                                                    <span class="admin-name" style="text-transform: capitalize"><?php //echo $rz['nrs_name'] ?></span>
                                                     <i class="fa fa-angle-down adminpro-icon adminpro-down-arrow"></i>
                                                 </a>
                                                 <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn" style="margin-left: -17px;width: 5px;">

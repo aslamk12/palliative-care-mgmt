@@ -46,52 +46,22 @@ include "header.php";
                 </style>
 
                 <a href="ass_pat_view.php" class="ass">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="admin-content analysis-progrebar-ctn res-mg-t-15">
-                        <h4 class="text-left text-uppercase" style="font-size: 19px;"><b>Assigned Patients</b></h4>
-                        <div class="row vertical-center-box vertical-center-box-tablet">
-                            <div class="col-xs-9 cus-gh-hd-pro">
-                                <h2 class="text-left no-margin" style="color:#24caa1"><?php echo $c1=mysqli_num_rows($ass) ?></h2>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="admin-content analysis-progrebar-ctn res-mg-t-15">
+                            <h4 class="text-left text-uppercase" style="font-size: 19px;"><b>Assigned Patients</b></h4>
+                            <div class="row vertical-center-box vertical-center-box-tablet">
+                                <div class="col-xs-9 cus-gh-hd-pro">
+                                    <h2 class="text-left no-margin" style="color:#24caa1"><?php //echo $c1=mysqli_num_rows($ass) ?></h2>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div></a>
+                    </div></a>
 
-                <a href="facility_request.php" class="fac">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="margin-bottom:1px;">
-                    <div class="admin-content analysis-progrebar-ctn res-mg-t-30">
-                        <h4 class="text-left text-uppercase"><b>facility request</b></h4>
-                        <div class="row vertical-center-box vertical-center-box-tablet">
-                            <div class="col-xs-9 cus-gh-hd-pro">
-                                <h2 class="text-left no-margin" style="color: #eb4b4b"><?php //echo $c2=mysqli_num_rows($fac) ?></h2>
-                            </div>
-                        </div>
-                    </div>
-                </div></a>
 
-                <a href="service_request.php" class="ser">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="admin-content analysis-progrebar-ctn res-mg-t-30">
-                        <h4 class="text-left text-uppercase"><b>service request</b></h4>
-                        <div class="row vertical-center-box vertical-center-box-tablet">
-                            <div class="col-xs-9 cus-gh-hd-pro">
-                                <h2 class="text-left no-margin" style="color: #2eb7f3"><?php //echo $c3=mysqli_num_rows($ser) ?></h2>
-                            </div>
-                        </div>
-                    </div>
-                </div></a>
 
-                <a href="view_notification.php" class="alr">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="admin-content analysis-progrebar-ctn res-mg-t-30">
-                        <h4 class="text-left text-uppercase" style="font-size: 19px;"><b>Alert notification</b></h4>
-                        <div class="row vertical-center-box vertical-center-box-tablet">
-                            <div class="col-xs-9 cus-gh-hd-pro">
-                                <h2 class="text-left no-margin" style="color: #805bbe"><?php //echo $c4=mysqli_num_rows($alt) ?></h2>
-                            </div>
-                        </div>
-                    </div>
-                </div></a>
+
+
+
 
             </div>
         </div>
@@ -103,142 +73,8 @@ include "header.php";
         <img src="">
         <div class="row">
             <div class="col-lg-6" style="margin-left: 250px">
-                <div class="product-sales-chart" style="height: 930px;   background: #ffffff47;
-    box-shadow: 0px 0px 4px 1px #777;">
-                <form method="post" action="update_profile.php" enctype="multipart/form-data">
-                    <style>
-                        .pull-right {
+                <div class="product-sales-chart" style="height: 930px;   ">
 
-                            float: left !important;
-
-                        }
-                    </style>
-                    <div class="sparkline12-graph">
-                        <div class="form-group-inner">
-                            <?php
-                            //if($rz['photo']==''){
-                                ?>
-                                <input type="file" name="image" class="form-control" />
-                            <?php
-                            //}//else { ?>
-                                <!--<img src="photo/<?php// echo $rz['photo'] ?>" style="height: 155px;width: 115px;border-radius: 40px;margin-left: 15px">
-                                <br><br><input type="file" name="image" class="form-control"/>-->
-                            <?php
-                            //}
-                            ?>
-                        </div>
-
-                        <div class="form-group-inner">
-                            <label>Ward</label>
-                            <select name="ward" class="form-control">
-                                <?php
-                                /*for($i=1;$i<=25;$i++) {
-                                    if ($i == $rz['wardno']) {
-                                        ?>
-                                        <option value="<?php echo $i ?>" selected><?php echo $i ?></option>
-
-                                    <?php
-                                    } else {
-                                        ?>
-
-                                        <option value="<?php echo $i ?>"><?php echo $i ?></option>
-                                    <?php
-                                    }
-                                }*/
-                                ?>
-                            </select>
-                        </div>
-
-                        <div class="form-group-inner">
-                            <label>Name</label>
-                            <input type="text" name="name" class="form-control" value="<?php echo $rz['nrs_name'] ?>" />
-                        </div>
-
-                        <div class="form-group-inner">
-                            <label>DOB</label>
-                            <input type="date" name="dob" class="form-control" value="<?php echo $rz['nrs_dob'] ?>" max="<?php echo date('Y-12-31',strtotime('-18year')) ?>"/>
-                        </div>
-
-                        <div class="form-group-inner">
-                            <label>Gender</label><br>
-                            <?php
-                           /* if($rz['nrs_gender']=='Male') {
-                                ?>&nbsp;&nbsp;
-                                Male &nbsp;<input type="radio" class="radio-checked" value="Male" name="gender" checked>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                Female &nbsp;<input type="radio" class="radio-checked" value="Female" name="gender">
-                            <?php
-                            }else {
-                                ?>
-                                Male &nbsp;<input type="radio" class="radio-checked" value="Male"  name="gender">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                Female &nbsp;<input type="radio" class="radio-checked" value="Female" name="gender" checked>
-                            <?php
-                            }*/
-                            ?>
-                        </div>
-
-                        <div class="form-group-inner">
-                            <label>Place</label>
-                            <input type="text" class="form-control" value="<?php //echo $rz['nrs_place'] ?>" name="place"/>
-                        </div>
-
-                        <div class="form-group-inner">
-                            <label>Contact</label>
-                            <input type="text" class="form-control" value="<?php //echo $rz['nrs_contact'] ?>" name="contact" />
-                        </div>
-
-                        <div class="form-group-inner">
-                            <label>Email</label>
-                            <input type="email" class="form-control" value="<?php //echo $rz['nrs_email'] ?>" style="background-color: transparent" readonly />
-                        </div>
-
-
-                        <div id="pwd-container1">
-
-                            <div class="form-group">
-                                <label for="password1">Password</label>
-                                <input type="password" class="form-control example1" id="password1" placeholder="Password" value="<?php echo $rz['nrs_password'] ?>" name="password">
-                                <button type="button" id="eye" style="background-color:white;border-color:transparent;margin-left: 530px;margin-top: 0px;">
-                                    <img src="https://cdn0.iconfinder.com/data/icons/feather/96/eye-16.png" alt="eye" />
-                                </button>
-                                <script>
-                                    function show() {
-                                        var p = document.getElementById('password1');
-                                        p.setAttribute('type', 'text');
-                                    }
-
-                                    function hide() {
-                                        var p = document.getElementById('password1');
-                                        p.setAttribute('type', 'password');
-                                    }
-
-                                    var pwShown = 0;
-
-                                    document.getElementById("eye").addEventListener("click", function () {
-                                        if (pwShown == 0) {
-                                            pwShown = 1;
-                                            show();
-                                        } else {
-                                            pwShown = 0;
-                                            hide();
-                                        }
-                                    }, false);
-                                </script>
-                                <p style="margin-left: 22%;margin-top: -19px;font-style: italic;color:chocolate;">Its better to change the password for the security *</p>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="pwstrength_viewport_progress"></div>
-                            </div>
-                        </div>
-
-                        <div class="login-btn-inner">
-                            <button class="btn btn-sm btn-primary pull-right login-submit-cs" type="submit" name="update">Update Profile</button>
-                        </div>
-
-                    </div>
-                </form>
                 </div>
             </div>
         </div>

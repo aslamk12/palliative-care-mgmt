@@ -94,8 +94,15 @@ if(isset($_POST['assign']))
     $patient=$rw1['pid'];
 
     $sel3=mysqli_query($con,"select * from assign_nurse where pid='$k'");
-    $rw2=mysqli_fetch_array($sel3);
-    $sts1=$rw2['ass_status'];
+    $sq=mysqli_query($con,$sel);
+    $count=mysqli_num_rows($sq);
+    if(count==1) {
+        $rw2 = mysqli_fetch_array($sel3);
+        $sts1 = $rw2['ass_status'];
+    }
+    else{
+        $sts1="";
+    }
     if($sts1=='assigned')
     {
         echo "<script>alert('Already assigned')</script>";

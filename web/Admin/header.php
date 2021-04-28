@@ -117,9 +117,12 @@ include "../connection.php";
                     </li>
                     <li><a title="Add Equipments" href="add_facility.php"><span class="educate-icon educate-event icon-wrap sub-icon-mg"></span><span class="mini-click-non">Equipments</span></a></li>
 
-
                     <li>
-                        <a  href="view_patient.php" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Patient</span></a>
+                        <a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Patient</span></a>
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Patient's Facility Request" href="view_patient.php"><span class="mini-sub-pro">View Request</span></a></li>
+                            <li><a title="Patient's Service Request" href="view_app_patient.php"><span class="mini-sub-pro">Assign Nurse</span></a></li>
+                        </ul>
                     </li>
 
                     <li>

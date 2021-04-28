@@ -7,7 +7,6 @@ include "header.php";
 //{
 //    $nmob=$rw4['uname'];
 //}
-echo $nmob;
 ?>
 <div class="breadcome-area">
     <div class="container-fluid">
@@ -69,7 +68,7 @@ echo $nmob;
                                     <td><?php echo $ro['disease'] ?></td>
                                     <td><?php echo date('d/m/Y', strtotime($ro['assigned_on'])) ?></td>
                                     <td>
-                                        <a href="viewmore_ass.php?id=<?php echo $ro['ass_nid'] ?>"
+                                        <a href="viewmore_plist.php?id=<?php echo $ro['pid'] ?>"
                                            data-toggle="tooltip" title="View" class="pd-setting-ed" style="padding: 6px 7px;
 color:
 #333;
@@ -83,7 +82,7 @@ background:
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="add_report.php?aid=<?php echo $ro['ass_nid'] ?>"
+                                        <a href="add_report.php?aid=<?php echo $ro['pid'] ?>"
                                            data-toggle="tooltip" title="View" class="pd-setting-ed" style="padding: 6px 7px;
 color:
 #333;

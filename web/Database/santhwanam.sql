@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 28, 2021 at 09:13 AM
+-- Generation Time: Apr 28, 2021 at 06:29 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -24,6 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `assign_nurse`
+--
+
+CREATE TABLE `assign_nurse` (
+  `ass_nid` int(5) NOT NULL,
+  `nurse` int(5) NOT NULL,
+  `patient` int(5) NOT NULL,
+  `assigned_on` date NOT NULL,
+  `ass_status` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `assign_nurse`
+--
+
+INSERT INTO `assign_nurse` (`ass_nid`, `nurse`, `patient`, `assigned_on`, `ass_status`) VALUES
+(8, 1, 1, '2021-04-28', 'assigned');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `assign_volunteer`
 --
 
@@ -40,8 +61,7 @@ CREATE TABLE `assign_volunteer` (
 --
 
 INSERT INTO `assign_volunteer` (`assv_id`, `volunteer`, `patient`, `assigned_on`, `ass_status`) VALUES
-(12, 3, 1, '2021-04-20', 'pending'),
-(13, 4, 4, '2021-04-28', 'pending');
+(12, 3, 1, '2021-04-20', 'pending');
 
 -- --------------------------------------------------------
 
@@ -64,12 +84,12 @@ CREATE TABLE `login` (
 INSERT INTO `login` (`login_id`, `uname`, `password`, `type`, `status`) VALUES
 (1, 'admin@gmail.com', 'admin123', 'admin', ''),
 (4, '7736918949', 'aslam123', 'volunteer', 'approved'),
-(5, '9567105862', 'qwerty', 'volunteer', 'approved'),
+(5, '9567105862', 'qwerty', 'volunteer', 'pending'),
 (6, '9876543210', 'aslam123', 'patient', 'approved'),
 (8, '9865321470', 'anas123', 'patient', 'pending'),
 (9, '9871234560', 'althaf123', 'volunteer', 'pending'),
 (11, '8136877801', '12345678', 'nurse', 'approved'),
-(12, '9605314236', 'anees123', 'patient', 'assigned');
+(12, '9605314236', 'anees123', 'patient', 'pending');
 
 -- --------------------------------------------------------
 
@@ -176,6 +196,14 @@ INSERT INTO `volunteer` (`vid`, `name`, `mobile`, `dob`, `place`, `panchayath`, 
 --
 
 --
+-- Indexes for table `assign_nurse`
+--
+ALTER TABLE `assign_nurse`
+  ADD PRIMARY KEY (`ass_nid`),
+  ADD KEY `nurse` (`nurse`),
+  ADD KEY `patient` (`patient`);
+
+--
 -- Indexes for table `assign_volunteer`
 --
 ALTER TABLE `assign_volunteer`
@@ -220,6 +248,12 @@ ALTER TABLE `volunteer`
 --
 
 --
+-- AUTO_INCREMENT for table `assign_nurse`
+--
+ALTER TABLE `assign_nurse`
+  MODIFY `ass_nid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `assign_volunteer`
 --
 ALTER TABLE `assign_volunteer`
@@ -252,6 +286,13 @@ ALTER TABLE `volunteer`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `assign_nurse`
+--
+ALTER TABLE `assign_nurse`
+  ADD CONSTRAINT `assign_nurse_ibfk_1` FOREIGN KEY (`nurse`) REFERENCES `nurse` (`nid`),
+  ADD CONSTRAINT `assign_nurse_ibfk_2` FOREIGN KEY (`patient`) REFERENCES `patient` (`pid`);
 
 --
 -- Constraints for table `assign_volunteer`

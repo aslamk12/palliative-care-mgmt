@@ -46,7 +46,7 @@ $row=mysqli_fetch_array($sq);
                         <div id="myTabContent" class="tab-content custom-product-edit">
 
                             <div class="product-tab-list tab-pane fade active in" id="description">
-                                <form method="post" action="add_report_fun.php?aid=<?php echo $k ?>&p=<?php echo $row['pid'] ?>">
+                                <form method="post" action="add_report_fun.php?pid=<?php echo $k ?>&p=<?php echo $row['pid'] ?>">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div class="review-content-section">
@@ -87,7 +87,7 @@ $row=mysqli_fetch_array($sq);
                                     <div class="container-fluid">
                                         <div class="row">
                                             <?php
-                                            $view=mysqli_query($con,"select * from work_report INNER JOIN patient ON work_report.patient=patient.pid where nurse='$nid'");
+                                            $view=mysqli_query($con,"select * from work_report INNER JOIN patient ON work_report.patient=patient.pid where patient.pid='$k'");
                                             $count=mysqli_num_rows($view);
                                             if($count==0)
                                             {
@@ -103,7 +103,6 @@ $row=mysqli_fetch_array($sq);
                                                             <tr>
                                                                 <th>No</th>
                                                                 <th>Patient Name</th>
-                                                                <th>Month</th>
                                                                 <th>Reported Date</th>
                                                                 <th>Prescription</th>
                                                                 <th>Report</th>
@@ -116,13 +115,12 @@ $row=mysqli_fetch_array($sq);
                                                                 ?>
                                                                 <tr>
                                                                     <td><?php echo $i?></td>
-                                                                    <td><?php echo $row['name'] ?></td>
-                                                                    <td><?php echo $row['c_month'] ?> <?php echo date('Y',strtotime($row['rep_date'])) ?></td>
-                                                                    <td><?php echo date('d/m/Y',strtotime($row['rep_date'])) ?></td>
+                                                                    <td><?php echo $row['pname'] ?></td>
+                                                                    <td><?php echo date('d/m/Y',strtotime($row['date'])) ?></td>
                                                                     <td><?php echo $row['medicines']?></td>
                                                                     <td><?php echo $row['report'] ?></td>
                                                                     <td>
-                                                                        <a href="edit_report.php?id=<?php echo $row['rid'] ?>" data-toggle="tooltip" title="Edit"
+                                                                        <a href="edit_report.php?id=<?php echo $row['wrid'] ?>" data-toggle="tooltip" title="Edit"
                                                                            class="pd-setting-ed" style="padding: 5px 10px;font-size: 14px;border-radius: 3px;border: 1px solid;rgba(0,0,0,.12);background:#f5f5f5;">
                                                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                                         </a>

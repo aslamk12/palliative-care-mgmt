@@ -143,15 +143,16 @@ $sql=mysqli_query($con,"select * from patient");
                                                         <th data-field="gender" data-editable="true">Gender</th>
                                                         <th data-field="place" data-editable="true">Place</th>
                                                         <th data-field="disease" data-editable="true">Disease</th>
+                                                        <th data-field="status" data-editable="true">Status</th>
 
                                                         <th data-field="viewmore">View More</th>
-                                                        <th data-field="viewmore">Action</th>
+                                                        <th data-field="assign">Action</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody style="text-transform: capitalize">
                                                     <?php
                                                     $i = 1;
-                                                    $view = mysqli_query($con, "select *from patient inner join login on patient.mobile=login.uname where login.status='approved' ");
+                                                    $view = mysqli_query($con, "select *from login inner join patient on login.uname=patient.mobile inner join assign_nurse on patient.pid=assign_nurse.patient where login.status='approved' ");
                                                     while ($row = mysqli_fetch_array($view)) {
                                                         ?>
                                                         <tr>
@@ -161,6 +162,7 @@ $sql=mysqli_query($con,"select * from patient");
                                                             <td><?php echo $row['gender'] ?></td>
                                                             <td><?php echo $row['place'] ?></td>
                                                             <td><?php echo $row['disease'] ?></td>
+                                                            <td><?php echo $row['ass_status'] ?></td>
                                                             <td>
                                                                 <a href="viewmore_patient.php?id=<?php echo $row['mobile'] ?>"
                                                                    data-toggle="tooltip" title="Edit"

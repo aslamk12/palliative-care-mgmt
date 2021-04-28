@@ -6,7 +6,7 @@ while ($rw4=mysqli_fetch_array($nm))
 {
     $name=$rw4['pname'];
 }
-$vol=mysqli_query($con,"select * from volunteer inner join login on volunteer.mobile=login.uname where login.status='approved'");
+$nurs=mysqli_query($con,"select * from nurse inner join login on nurse.mobile=login.uname where login.status='approved'");
 
 ?>
 <!-- Mobile Menu end -->
@@ -24,7 +24,7 @@ $vol=mysqli_query($con,"select * from volunteer inner join login on volunteer.mo
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
                                 <li>Patient</a> <span class="bread-slash">/</span></li>
-                                <li><span class="bread-blod">Assign Volunteer</span></li>
+                                <li><span class="bread-blod">Assign Nurse</span></li>
                             </ul>
                         </div>
                     </div>
@@ -39,51 +39,51 @@ $vol=mysqli_query($con,"select * from volunteer inner join login on volunteer.mo
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-status-wrap">
-                        <h4>Assign Volunteer</h4>
+                    <h4>Assign Nurse</h4>
 
-                        <div class="asset-inner">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="sparkline13-list">
-                                        <form method="post">
-                                            <f class="sparkline13-graph">
-                                              <div class="datatable-dashv1-list custom-datatable-overright">
-                                                  <div class="form-group-inner">
-                                                      <label>Patient Name</label>
-                                                      <input readonly class="form-control" value="<?php echo $name?>" style="text-transform: capitalize;background-color:transparent;" />
-                                                  </div>
-                                                <select name="volunteer"  class="form-control" id="select1">
-                                                    <option disabled selected>~ Select Volunteer ~</option>
-                                                    <?php while ($rw_vol=mysqli_fetch_array($vol)){ ?>
-                                                        <option value="<?php echo $rw_vol[0]?>"><?php echo $rw_vol[1] ?></option>
+                    <div class="asset-inner">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="sparkline13-list">
+                                    <form method="post">
+                                        <f class="sparkline13-graph">
+                                            <div class="datatable-dashv1-list custom-datatable-overright">
+                                                <div class="form-group-inner">
+                                                    <label>Patient Name</label>
+                                                    <input readonly class="form-control" value="<?php echo $name?>" style="text-transform: capitalize;background-color:transparent;" />
+                                                </div>
+                                                <select name="nurse"  class="form-control" id="select1">
+                                                    <option disabled selected>~ Select Nurse ~</option>
+                                                    <?php while ($rw_nur=mysqli_fetch_array($nurs)){ ?>
+                                                        <option value="<?php echo $rw_nur[0]?>"><?php echo $rw_nur[1] ?></option>
                                                     <?php }?>
 
                                                 </select>
                                                 <br/>
                                                 <br/>
                                                 <center><button id="send" type="submit" name="assign" class="btn btn-primary waves-effect waves-light" style="text-transform: uppercase">ASSIGN</button></center>
-                                              </div>
-                                        </form>
-                                    </div>
-                                    </div>
-
+                                            </div>
+                                    </form>
                                 </div>
                             </div>
 
                         </div>
+                    </div>
 
                 </div>
+
             </div>
         </div>
     </div>
 </div>
+</div>
 <?php
 if(isset($_POST['assign']))
 {
-    $volunteer=$_POST['volunteer'];
+    $nurse=$_POST['nurse'];
 
     $aDate = date('Y-m-d');
-    $sts= 'pending';
+    $sts= 'assigned';
     $sel=mysqli_query($con,"select * from login where uname='$k' and type='patient'");
     while ($rw=mysqli_fetch_array($sel))
     {
@@ -92,19 +92,26 @@ if(isset($_POST['assign']))
     $sel2=mysqli_query($con,"select * from patient where mobile='$k'");
     $rw1=mysqli_fetch_array($sel2);
     $patient=$rw1['pid'];
-    $ins="insert into assign_volunteer (volunteer,patient,assigned_on,ass_status) values('$volunteer','$patient','$aDate','$sts')";
-    $sq=mysqli_query($con,$ins);
-    if($sq)
-    {
-        $upt=mysqli_query($con,"update login set status='assigned' where login_id='$l_id'");
 
-        echo "<script>alert('SUCCESS')</script>";
+    $sel3=mysqli_query($con,"select * from assign_nurse where pid='$k'");
+    $rw2=mysqli_fetch_array($sel3);
+    $sts1=$rw2['ass_status'];
+    if($sts1=='assigned')
+    {
+        echo "<script>alert('Already assigned')</script>";
         echo "<script>window.location.href='view_patient.php'</script>";
     }
-    else
-    {
-        echo "<script>alert('FAILED')</script>";
-        echo "<script>window.location.href='view_patient.php'</script>";
+    else {
+
+        $ins = "insert into assign_nurse (nurse,patient,assigned_on,ass_status) values('$nurse','$patient','$aDate','$sts')";
+        $sq = mysqli_query($con, $ins);
+        if ($sq) {
+            echo "<script>alert('SUCCESS')</script>";
+            echo "<script>window.location.href='view_patient.php'</script>";
+        } else {
+            echo "<script>alert('FAILED')</script>";
+            echo "<script>window.location.href='view_patient.php'</script>";
+        }
     }
 } ?>
 

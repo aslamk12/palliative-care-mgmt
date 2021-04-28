@@ -62,6 +62,7 @@ $sql=mysqli_query($con,"select * from patient");
                                                         <th data-field="ward" data-editable="true">Ward</th>
                                                         <th data-field="address" data-editable="true">Address</th>
                                                         <th data-field="pincode" data-editable="true">Pincode</th>
+                                                        <th data-field="disease" data-editable="true">Disease</th>
                                                         <th data-field="Status" data-editable="true">Status</th>
 
                                                         <th data-field="approve">Action</th>
@@ -85,6 +86,7 @@ $sql=mysqli_query($con,"select * from patient");
                                                             <td><?php echo $row['ward'] ?></td>
                                                             <td><?php echo $row['address'] ?></td>
                                                             <td><?php echo $row['pincode'] ?></td>
+                                                            <td><?php echo $row['disease'] ?></td>
                                                             <td><?php echo $row['status'] ?></td>
                                                             <td>
                                                                 <a href="assign_volunteer.php?id=<?php echo $row['mobile'] ?>"
@@ -117,6 +119,79 @@ $sql=mysqli_query($con,"select * from patient");
 
                         <?php
                     }
+                    ?>
+
+                </div>
+                <div class="product-status-wrap">
+
+                        <h4>Apporoved Patients</h4>
+
+                        <div class="asset-inner">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="sparkline13-list">
+
+                                        <div class="sparkline13-graph">
+                                            <div class="datatable-dashv1-list custom-datatable-overright">
+                                                <table id="table" data-toggle="table" data-pagination="true"
+                                                       data-search="true">
+                                                    <thead>
+                                                    <tr>
+                                                        <th data-field="id">No</th>
+                                                        <th data-field="name" data-editable="true">Name</th>
+                                                        <th data-field="mobile" data-editable="true">Mobile</th>
+                                                        <th data-field="gender" data-editable="true">Gender</th>
+                                                        <th data-field="place" data-editable="true">Place</th>
+                                                        <th data-field="disease" data-editable="true">Disease</th>
+
+                                                        <th data-field="viewmore">View More</th>
+                                                        <th data-field="viewmore">Action</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody style="text-transform: capitalize">
+                                                    <?php
+                                                    $i = 1;
+                                                    $view = mysqli_query($con, "select *from patient inner join login on patient.mobile=login.uname where login.status='approved' ");
+                                                    while ($row = mysqli_fetch_array($view)) {
+                                                        ?>
+                                                        <tr>
+                                                            <td><?php echo $i ?></td>
+                                                            <td><?php echo $row['pname'] ?></td>
+                                                            <td><?php echo $row['mobile'] ?></td>
+                                                            <td><?php echo $row['gender'] ?></td>
+                                                            <td><?php echo $row['place'] ?></td>
+                                                            <td><?php echo $row['disease'] ?></td>
+                                                            <td>
+                                                                <a href="viewmore_patient.php?id=<?php echo $row['mobile'] ?>"
+                                                                   data-toggle="tooltip" title="Edit"
+                                                                   class="pd-setting-ed"><img src="img/viewmore.png"
+                                                                                              style="height: 40px;width: 39px;margin-left: -9px;"></a>
+                                                            </td>
+                                                            <td>
+                                                                <a href="assign_nurse.php?id=<?php echo $row['mobile'] ?>"
+                                                                   data-toggle="tooltip" title="Edit"
+                                                                   class="pd-setting-ed"><img src="img/add.png"
+                                                                                              style="height: 40px;width: 39px;margin-left: -9px;"></a>
+                                                            </td>
+
+                                                        </tr>
+                                                        <?php
+                                                        $i++;
+                                                    }
+                                                    ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <?php
+
                     ?>
 
                 </div>

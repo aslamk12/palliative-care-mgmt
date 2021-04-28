@@ -74,6 +74,7 @@ if(isset($_POST['assign']))
     $volunteer=$_POST['volunteer'];
 
     $aDate = date('Y-m-d');
+    $sts= 'pending';
     $sel=mysqli_query($con,"select * from login where uname='$k' and type='patient'");
     while ($rw=mysqli_fetch_array($sel))
     {
@@ -82,7 +83,7 @@ if(isset($_POST['assign']))
     $sel2=mysqli_query($con,"select * from patient where mobile='$k'");
     $rw1=mysqli_fetch_array($sel2);
     $patient=$rw1['pid'];
-    $ins="insert into assign_volunteer (volunteer,patient,assigned_on) values('$volunteer','$patient','$aDate')";
+    $ins="insert into assign_volunteer (volunteer,patient,assigned_on,ass_status) values('$volunteer','$patient','$aDate','$sts')";
     $sq=mysqli_query($con,$ins);
     if($sq)
     {

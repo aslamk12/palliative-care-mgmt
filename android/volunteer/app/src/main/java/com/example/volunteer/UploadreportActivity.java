@@ -123,7 +123,7 @@ public class UploadreportActivity extends AppCompatActivity {
                 super.onPostExecute(s);
 
                 loading.dismiss();
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),s, Toast.LENGTH_LONG).show();
                 goHome();
             }
         }
@@ -134,7 +134,7 @@ public class UploadreportActivity extends AppCompatActivity {
 
     private void goHome()
     {
-        Intent homeIntent = new Intent(UploadreportActivity.this, HomeActivity.class);
+        Intent homeIntent = new Intent(UploadreportActivity.this, PatientVerificationActivity.class);
         startActivity(homeIntent);
     }
 

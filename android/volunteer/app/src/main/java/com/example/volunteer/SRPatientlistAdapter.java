@@ -16,12 +16,12 @@ import java.util.List;
 
 public class SRPatientlistAdapter extends RecyclerView.Adapter<SRPatientlistAdapter.SRPatientlistViewHolder> {
     private Context mCtx;
-    private List<Patientlist> patientlists;
+    private List<SrPatientlist> srpatientlists;
 
 
-    public SRPatientlistAdapter(Context mCtx, List<Patientlist> patientlists) {
+    public SRPatientlistAdapter(Context mCtx, List<SrPatientlist> srpatientlists) {
         this.mCtx = mCtx;
-        this.patientlists = patientlists;
+        this.srpatientlists = srpatientlists;
     }
 
     @NonNull
@@ -29,7 +29,7 @@ public class SRPatientlistAdapter extends RecyclerView.Adapter<SRPatientlistAdap
     public SRPatientlistAdapter.SRPatientlistViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater inflater = LayoutInflater.from(mCtx);
-        View view = inflater.inflate(R.layout.patientlist, null);
+        View view = inflater.inflate(R.layout.sendreportlist, null);
 
         return new SRPatientlistAdapter.SRPatientlistViewHolder(view);
     }
@@ -37,12 +37,12 @@ public class SRPatientlistAdapter extends RecyclerView.Adapter<SRPatientlistAdap
     @Override
     public void onBindViewHolder(@NonNull SRPatientlistAdapter.SRPatientlistViewHolder holder, final int position) {
 
-        Patientlist patientlist = patientlists.get(position);
+        SrPatientlist srpatientlist = srpatientlists.get(position);
 
 
-        holder.tv_patname.setText(patientlist.getPat_name());
-        holder.tv_gender.setText(patientlist.getPat_gender());
-        holder.tv_disease.setText(patientlist.getPat_disease());
+        holder.tv_patname.setText(srpatientlist.getPat_name());
+        holder.tv_gender.setText(srpatientlist.getPat_gender());
+        holder.tv_disease.setText(srpatientlist.getPat_disease());
         holder.sendreport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,10 +50,10 @@ public class SRPatientlistAdapter extends RecyclerView.Adapter<SRPatientlistAdap
                 Intent intent;
                 Context context = mCtx;
 
-                intent = new Intent(context, PatientDetailsActivity.class);
-                intent.putExtra("assv_id",patientlist.getAssv_id());
-                intent.putExtra("pid",patientlist.getPid());
-                intent.putExtra("pname",patientlist.getPat_name());
+                intent = new Intent(context,SendReportActivity.class);
+                intent.putExtra("assv_id",srpatientlist.getAssv_id());
+                intent.putExtra("pid",srpatientlist.getPid());
+                intent.putExtra("pname",srpatientlist.getPat_name());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mCtx.startActivity(intent);
             }
@@ -66,7 +66,7 @@ public class SRPatientlistAdapter extends RecyclerView.Adapter<SRPatientlistAdap
 
     @Override
     public int getItemCount() {
-        return patientlists.size();
+        return srpatientlists.size();
     }
 
     class SRPatientlistViewHolder extends RecyclerView.ViewHolder {
@@ -84,8 +84,6 @@ public class SRPatientlistAdapter extends RecyclerView.Adapter<SRPatientlistAdap
             tv_disease = itemView.findViewById(R.id.tv_sdisease_real);
             sendreport = itemView.findViewById(R.id.sendreport);
         }
-
-
 
     }
 }

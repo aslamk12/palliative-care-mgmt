@@ -37,9 +37,33 @@ public class SendReportActivity extends AppCompatActivity {
         btn_upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadreport();
+                validate();
             }
         });
+    }
+    private void validate()
+    {
+        if(et_disease.getText().toString().isEmpty())
+        {
+            et_disease.setError("Enter disease details");
+            et_disease.requestFocus();
+        }
+        else if (et_medicines.getText().toString().isEmpty())
+        {
+            et_medicines.setError("Enter medicines taking");
+            et_medicines.requestFocus();
+        }
+
+        else if(et_description.getText().toString().isEmpty())
+        {
+            et_description.setError("Enter description about patient health");
+            et_description.requestFocus();
+        }
+
+        else
+        {
+            uploadreport();
+        }
     }
     private void uploadreport()
     {

@@ -1,7 +1,7 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD']=='POST') {
-    require_once 'DbConnect.php';
+    require_once 'DBconnect.php';
     
     $image = $_POST['image'];
     $vid = $_POST['vid'];
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
 
     $file_name = $pid . '_PATIENT_REPORT_' . $img_no;
 
-    $path = "UPLOADS/$file_name.png";
+    $path = "UPLOADS/$file_name.jpg";
 
     $actual_path = "http://192.168.42.232/santhwanam/$path";
 

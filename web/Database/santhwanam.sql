@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 27, 2021 at 09:49 AM
+-- Generation Time: Apr 28, 2021 at 09:13 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -40,7 +40,8 @@ CREATE TABLE `assign_volunteer` (
 --
 
 INSERT INTO `assign_volunteer` (`assv_id`, `volunteer`, `patient`, `assigned_on`, `ass_status`) VALUES
-(12, 3, 1, '2021-04-20', 'pending');
+(12, 3, 1, '2021-04-20', 'pending'),
+(13, 4, 4, '2021-04-28', 'pending');
 
 -- --------------------------------------------------------
 
@@ -64,10 +65,11 @@ INSERT INTO `login` (`login_id`, `uname`, `password`, `type`, `status`) VALUES
 (1, 'admin@gmail.com', 'admin123', 'admin', ''),
 (4, '7736918949', 'aslam123', 'volunteer', 'approved'),
 (5, '9567105862', 'qwerty', 'volunteer', 'approved'),
-(6, '9876543210', 'aslam123', 'patient', 'pending'),
+(6, '9876543210', 'aslam123', 'patient', 'approved'),
 (8, '9865321470', 'anas123', 'patient', 'pending'),
 (9, '9871234560', 'althaf123', 'volunteer', 'pending'),
-(11, '8136877801', '12345678', 'nurse', 'approved');
+(11, '8136877801', '12345678', 'nurse', 'approved'),
+(12, '9605314236', 'anees123', 'patient', 'assigned');
 
 -- --------------------------------------------------------
 
@@ -84,6 +86,13 @@ CREATE TABLE `medical_report` (
   `description` varchar(150) NOT NULL,
   `report_image` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `medical_report`
+--
+
+INSERT INTO `medical_report` (`mr_id`, `pid`, `vid`, `disease`, `medicines`, `description`, `report_image`) VALUES
+(1, 1, 3, 'paraplegia', 'abcd', 'both legs are disabled', '1PATIENT_REPORT1.jpeg');
 
 -- --------------------------------------------------------
 
@@ -124,16 +133,18 @@ CREATE TABLE `patient` (
   `panchayath` varchar(25) NOT NULL,
   `ward` int(5) NOT NULL,
   `address` varchar(50) NOT NULL,
-  `pincode` int(8) NOT NULL
+  `pincode` int(8) NOT NULL,
+  `disease` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `patient`
 --
 
-INSERT INTO `patient` (`pid`, `pname`, `mobile`, `dob`, `gender`, `place`, `panchayath`, `ward`, `address`, `pincode`) VALUES
-(1, 'aslam', 9876543210, '2000-04-10', 'male', 'qwerty', 'qwerty', 5, 'qwerty', 679579),
-(3, 'anas k', 9865321470, '2000-04-01', 'male', 'edapal', 'edapal', 5, 'kallingal', 679576);
+INSERT INTO `patient` (`pid`, `pname`, `mobile`, `dob`, `gender`, `place`, `panchayath`, `ward`, `address`, `pincode`, `disease`) VALUES
+(1, 'aslam', 9876543210, '2000-04-10', 'male', 'qwerty', 'qwerty', 5, 'qwerty', 679579, 'paraplegia'),
+(3, 'anas k', 9865321470, '2000-04-01', 'male', 'edapal', 'edapal', 5, 'kallingal', 679576, 'paraplegia'),
+(4, 'anees', 9605314236, '2000-04-01', 'male', 'edapal', 'edapal', 5, 'anees villa', 679576, 'cancer');
 
 -- --------------------------------------------------------
 
@@ -182,7 +193,9 @@ ALTER TABLE `login`
 -- Indexes for table `medical_report`
 --
 ALTER TABLE `medical_report`
-  ADD PRIMARY KEY (`mr_id`);
+  ADD PRIMARY KEY (`mr_id`),
+  ADD KEY `pid` (`pid`),
+  ADD KEY `medical_report_ibfk_1` (`vid`);
 
 --
 -- Indexes for table `nurse`
@@ -210,13 +223,13 @@ ALTER TABLE `volunteer`
 -- AUTO_INCREMENT for table `assign_volunteer`
 --
 ALTER TABLE `assign_volunteer`
-  MODIFY `assv_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `assv_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `login_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `login_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `nurse`
@@ -228,7 +241,7 @@ ALTER TABLE `nurse`
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `pid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `pid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `volunteer`
@@ -245,6 +258,12 @@ ALTER TABLE `volunteer`
 --
 ALTER TABLE `assign_volunteer`
   ADD CONSTRAINT `assign_volunteer_ibfk_1` FOREIGN KEY (`patient`) REFERENCES `patient` (`pid`);
+
+--
+-- Constraints for table `medical_report`
+--
+ALTER TABLE `medical_report`
+  ADD CONSTRAINT `medical_report_ibfk_1` FOREIGN KEY (`vid`) REFERENCES `volunteer` (`vid`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

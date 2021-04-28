@@ -1,13 +1,13 @@
 <?php
-//session_start();
-//$nid=$_SESSION['nrs_id'];
-//if(!$nid)
+session_start();
+$nmob=$_SESSION['nrs_mob'];
+if(!$nmob)
 {
- //   header('location:logout.php');
+    header('location:logout.php');
 }
 include "../connection.php";
-//$z=mysqli_query($con,"select * from nurse WHERE nrs_id='$nid'");
-//$rz=mysqli_fetch_array($z);
+$z=mysqli_query($con,"select * from nurse WHERE mobile='$nmob'");
+$rz=mysqli_fetch_array($z);
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -89,7 +89,7 @@ include "../connection.php";
 
                     <li><a title="Home" href="index.php" aria-expanded="false"><i class="fa big-icon fa-home icon-wrap"></i><span class="mini-click-non">Home</span></a></li>
 
-                    <li><a title="Assigned patients" href="ass_pat_view.php" aria-expanded="false"><i class="fa fa-users icon-wrap sub-icon-mg" aria-hidden="true"></i> <span class="mini-click-non">Assigned Patients</span></a></li>
+                    <li><a title="Assigned patients" href="view_patientlist.php" aria-expanded="false"><i class="fa fa-users icon-wrap sub-icon-mg" aria-hidden="true"></i> <span class="mini-click-non">Assigned Patients</span></a></li>
 
                     <li><a title="edit profile" href="edit_profile.php" aria-expanded="false"><i class="fa fa-user-plus icon-wrap sub-icon-mg" aria-hidden="true"></i> <span class="mini-click-non">Edit Profile</span></a></li>
 

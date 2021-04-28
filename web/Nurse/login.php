@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 include "../connection.php";
 if(isset($_POST['sub'])) {
     $type ='nurse';
@@ -12,9 +12,9 @@ if(isset($_POST['sub'])) {
         $sq = mysqli_query($con, $sel);
         $count = mysqli_num_rows($sq);
         if ($count == 1) {
-//            $row = mysqli_fetch_array($sq);
-//            $nid = $row['logi_id'];
-//            $_SESSION['nrs_id'] = $nid;
+            $row = mysqli_fetch_array($sq);
+            $nmob = $mobile;
+            $_SESSION['nrs_mob'] = $nmob;
 
             echo "<script>alert('SUCCESS')</script>";
             echo "<script>window.location.href='index.php'</script>";

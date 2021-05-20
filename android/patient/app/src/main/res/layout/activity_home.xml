@@ -86,6 +86,7 @@
                         android:src="@drawable/ic_equipments_foreground"/>
                     <TextView
                         android:layout_width="wrap_content"
+                        android:id="@+id/tv_equipments"
                         android:layout_height="wrap_content"
                         android:text="Equipments"
                         android:textColor="@color/dark_blue"

@@ -13,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Patient"
         android:usesCleartextTraffic="true">
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".EquipmentDetails"></activity>
+        <activity android:name=".EquipmentActivity" />
+        <activity android:name=".EquipmentHomeActvity" />
+        <activity android:name=".HomeActivity" />
         <activity android:name=".Register2Activtiy" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity">

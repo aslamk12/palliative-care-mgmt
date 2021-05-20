@@ -7,19 +7,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class HomeActivity extends AppCompatActivity {
-    TextView tv_equipments;
+public class EquipmentHomeActvity extends AppCompatActivity {
+    TextView tv_av_equip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        tv_equipments=(TextView)findViewById(R.id.tv_equipments);
-        tv_equipments.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_equipment_home_actvity);
+        tv_av_equip=(TextView)findViewById(R.id.tv_av_equip);
+        tv_av_equip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent regIntent = new Intent(HomeActivity.this,EquipmentHomeActvity.class);
+                Intent regIntent = new Intent(EquipmentHomeActvity.this,EquipmentActivity.class);
                 startActivity(regIntent);
 
             }

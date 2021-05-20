@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 20, 2021 at 10:47 AM
+-- Generation Time: May 20, 2021 at 02:07 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -78,16 +78,37 @@ CREATE TABLE `equipments` (
   `e_name` varchar(15) NOT NULL,
   `e_stock` int(10) NOT NULL,
   `e_date` date NOT NULL,
-  `image` varchar(250) NOT NULL
+  `image` varchar(250) NOT NULL,
+  `description` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `equipments`
 --
 
-INSERT INTO `equipments` (`eid`, `e_name`, `e_stock`, `e_date`, `image`) VALUES
-(2, 'wheelchair', 16, '2021-05-07', '1621492338.jpg'),
-(3, 'water bed', 5, '2021-05-02', '1621492462.jpg');
+INSERT INTO `equipments` (`eid`, `e_name`, `e_stock`, `e_date`, `image`, `description`) VALUES
+(2, 'wheelchair', 16, '2021-05-07', '1621492338.jpg', 'good equipments'),
+(3, 'water bed', 5, '2021-05-02', '1621492462.jpg', 'abcdefg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `equipment_request`
+--
+
+CREATE TABLE `equipment_request` (
+  `req_id` int(5) NOT NULL,
+  `patient` int(5) NOT NULL,
+  `equipment` int(5) NOT NULL,
+  `status` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `equipment_request`
+--
+
+INSERT INTO `equipment_request` (`req_id`, `patient`, `equipment`, `status`) VALUES
+(3, 1, 2, 'pending');
 
 -- --------------------------------------------------------
 
@@ -280,6 +301,12 @@ ALTER TABLE `equipments`
   ADD PRIMARY KEY (`eid`);
 
 --
+-- Indexes for table `equipment_request`
+--
+ALTER TABLE `equipment_request`
+  ADD PRIMARY KEY (`req_id`);
+
+--
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
@@ -340,6 +367,12 @@ ALTER TABLE `assign_volunteer`
 --
 ALTER TABLE `equipments`
   MODIFY `eid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `equipment_request`
+--
+ALTER TABLE `equipment_request`
+  MODIFY `req_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `login`

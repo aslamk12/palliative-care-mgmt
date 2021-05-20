@@ -22,7 +22,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 public class EquipmentDetails extends AppCompatActivity {
-    int eid,stock;
+    int eid,stock,req_id;
     int loggedIn_user;
     String ename,image,description;
     ImageView iv_equip;
@@ -33,12 +33,20 @@ public class EquipmentDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipment_details);
+        Patient patient = SharedPrefManager.getInstance(this).getPatient();
+        loggedIn_user = patient.getPid();
         eid=getIntent().getExtras().getInt("eid");
         tv_ename=findViewById(R.id.equipment_name);
         tv_stock=findViewById(R.id.stcok_val);
         tv_description=findViewById(R.id.Description);
         iv_equip=findViewById(R.id.equipment_image);
         bt_sendreq=findViewById(R.id.send_request);
+        bt_sendreq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendrequest();
+            }
+        });
 
         loadequipmentdetails();
     }
@@ -100,4 +108,52 @@ public class EquipmentDetails extends AppCompatActivity {
                 .load(image)
                 .into(iv_equip);
     }
+    private void sendrequest()
+    {
+
+        class Sendrequest extends AsyncTask<Void,Void, String>
+        {
+
+            @Override
+            protected String doInBackground(Void... voids) {
+
+                RequestHandler requestHandler = new RequestHandler();
+
+                HashMap<String,String> params = new HashMap<>();
+
+                params.put("pid", String.valueOf(loggedIn_user));
+                params.put("eid", String.valueOf(eid));
+
+
+
+
+                return requestHandler.sendPostRequest(URLs.URL_SEND_REQUEST, params);
+            }
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+
+                try
+                {
+                    JSONArray array = new JSONArray(s);
+                    for (int i = 0; i < array.length(); i++) {
+
+                        JSONObject users = array.getJSONObject(i);
+                        req_id = users.getInt("req_id");
+
+                        Toast.makeText(getApplicationContext(), "request sent succesfully", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+                catch (JSONException e)
+                {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+        Sendrequest sr = new Sendrequest();
+        sr.execute();
+    }
+
 }

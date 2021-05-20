@@ -93,33 +93,33 @@ if(isset($_POST['assign']))
     $rw1=mysqli_fetch_array($sel2);
     $patient=$rw1['pid'];
 
-    $sel3=mysqli_query($con,"select * from assign_nurse where pid='$k'");
-    $sq=mysqli_query($con,$sel);
-    $count=mysqli_num_rows($sq);
-    if(count==1) {
-        $rw2 = mysqli_fetch_array($sel3);
-        $sts1 = $rw2['ass_status'];
-    }
-    else{
-        $sts1="";
-    }
-    if($sts1=='assigned')
-    {
-        echo "<script>alert('Already assigned')</script>";
-        echo "<script>window.location.href='view_patient.php'</script>";
-    }
-    else {
+//    $sel3=mysqli_query($con,"select * from assign_nurse where pid='$k'");
+//    $sq=mysqli_query($con,$sel);
+//    $count=mysqli_num_rows($sq);
+//    if(count==1) {
+//        $rw2 = mysqli_fetch_array($sel3);
+//        $sts1 = $rw2['ass_status'];
+//    }
+//    else{
+//        $sts1="";
+//    }
+//    if($sts1=='assigned')
+//    {
+//        echo "<script>alert('Already assigned')</script>";
+//        echo "<script>window.location.href='view_patient.php'</script>";
+//    }
+//    else {
 
         $ins = "insert into assign_nurse (nurse,patient,assigned_on,ass_status) values('$nurse','$patient','$aDate','$sts')";
         $sq = mysqli_query($con, $ins);
         if ($sq) {
             echo "<script>alert('SUCCESS')</script>";
-            echo "<script>window.location.href='view_patient.php'</script>";
+            echo "<script>window.location.href='view_app_patient.php'</script>";
         } else {
             echo "<script>alert('FAILED')</script>";
-            echo "<script>window.location.href='view_patient.php'</script>";
+            echo "<script>window.location.href='view_app_patient.php'</script>";
         }
-    }
+    //}
 } ?>
 
 <?php

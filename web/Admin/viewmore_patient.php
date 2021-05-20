@@ -95,7 +95,7 @@ $ro1=mysqli_fetch_array($sq1);
                                 }else{
                                     ?>
                                     <img src="../UPLOADS/<?php echo $ro1['report_image'] ?>" alt=""
-                                         style="height: 235px;width: 220px;margin-left: 50px;"/>
+                                         style="height: 400px;width: 300px;margin-left: 50px;"/>
                                     <?php
                                 }
                                 ?>

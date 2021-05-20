@@ -41,7 +41,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					<form action="../../Nurse/login.php" method="post">
 
 
-						<input placeholder="Mobile" name="mobile" class="user" type="number" required="">
+						<input placeholder="Mobile" name="mobile" class="user" type="text" onkeypress="javascript:return isNumber(event)" maxlength="10" required="" style="outline: none;font-size: .9em;padding: 1em 5em 1em 1em;border: none;margin-bottom: .8em;background: #fff;width: 78%;color: #000;font-family: 'Roboto', sans-serif;">
 
 						<input  placeholder="Password" name="password" class="pass" type="password" required="">
 

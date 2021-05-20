@@ -19,7 +19,7 @@ if(isset($_POST['sub']))
         echo "<script>window.location.href='index.php'</script>";
     }
     else{
-        echo "<script>alert('Error')</script>";
+        echo "<script>alert('Invalid Username or Password')</script>";
         echo "<script>window.location.href='../login/admin/index.php'</script>";
 
     }

@@ -16,10 +16,10 @@ if(isset($_POST['sub'])) {
             $nmob = $mobile;
             $_SESSION['nrs_mob'] = $nmob;
 
-            echo "<script>alert('SUCCESS')</script>";
+            echo "<script>alert('Logged in Successfully')</script>";
             echo "<script>window.location.href='index.php'</script>";
         } else {
-            echo "<script>alert('Error')</script>";
+            echo "<script>alert('Invalid Mobile Number or Password')</script>";
             echo "<script>window.location.href='../login/staff/index.php'</script>";
 
         }

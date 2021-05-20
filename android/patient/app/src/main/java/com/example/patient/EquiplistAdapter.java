@@ -73,7 +73,7 @@ public class EquiplistAdapter  extends RecyclerView.Adapter<EquiplistAdapter.Equ
             for (int i = 0; i < getItemCount(); i++) {
                 if (v == itemView) {
                     intent = new Intent(context, EquipmentDetails.class);
-                    intent.putExtra("product_id", equiplists.get(getLayoutPosition()).getEid());
+                    intent.putExtra("eid", equiplists.get(getLayoutPosition()).getEid());
                     context.startActivity(intent);
                     break;
                 }

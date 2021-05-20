@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 20, 2021 at 02:07 PM
+-- Generation Time: May 20, 2021 at 03:59 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -87,7 +87,7 @@ CREATE TABLE `equipments` (
 --
 
 INSERT INTO `equipments` (`eid`, `e_name`, `e_stock`, `e_date`, `image`, `description`) VALUES
-(2, 'wheelchair', 16, '2021-05-07', '1621492338.jpg', 'good equipments'),
+(2, 'wheelchair', 16, '2021-05-07', '1621492338.jpg', 'very good equipments'),
 (3, 'water bed', 5, '2021-05-02', '1621492462.jpg', 'abcdefg');
 
 -- --------------------------------------------------------
@@ -108,7 +108,7 @@ CREATE TABLE `equipment_request` (
 --
 
 INSERT INTO `equipment_request` (`req_id`, `patient`, `equipment`, `status`) VALUES
-(3, 1, 2, 'pending');
+(3, 1, 2, 'assigned');
 
 -- --------------------------------------------------------
 
@@ -228,6 +228,29 @@ INSERT INTO `patient` (`pid`, `pname`, `mobile`, `dob`, `gender`, `place`, `panc
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `transport`
+--
+
+CREATE TABLE `transport` (
+  `tid` int(5) NOT NULL,
+  `equipment` int(5) NOT NULL,
+  `patient` int(5) NOT NULL,
+  `volunteer` int(5) NOT NULL,
+  `request_id` int(5) NOT NULL,
+  `tr_status` varchar(15) NOT NULL,
+  `tr_assdate` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `transport`
+--
+
+INSERT INTO `transport` (`tid`, `equipment`, `patient`, `volunteer`, `request_id`, `tr_status`, `tr_assdate`) VALUES
+(1, 2, 1, 5, 3, 'assigned', '2021-05-20');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `volunteer`
 --
 
@@ -304,7 +327,9 @@ ALTER TABLE `equipments`
 -- Indexes for table `equipment_request`
 --
 ALTER TABLE `equipment_request`
-  ADD PRIMARY KEY (`req_id`);
+  ADD PRIMARY KEY (`req_id`),
+  ADD KEY `equipment` (`equipment`),
+  ADD KEY `patient` (`patient`);
 
 --
 -- Indexes for table `login`
@@ -331,6 +356,16 @@ ALTER TABLE `nurse`
 --
 ALTER TABLE `patient`
   ADD PRIMARY KEY (`pid`);
+
+--
+-- Indexes for table `transport`
+--
+ALTER TABLE `transport`
+  ADD PRIMARY KEY (`tid`),
+  ADD KEY `equipment` (`equipment`),
+  ADD KEY `patient` (`patient`),
+  ADD KEY `volunteer` (`volunteer`),
+  ADD KEY `request_id` (`request_id`);
 
 --
 -- Indexes for table `volunteer`
@@ -393,6 +428,12 @@ ALTER TABLE `patient`
   MODIFY `pid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `transport`
+--
+ALTER TABLE `transport`
+  MODIFY `tid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `volunteer`
 --
 ALTER TABLE `volunteer`
@@ -422,10 +463,26 @@ ALTER TABLE `assign_volunteer`
   ADD CONSTRAINT `assign_volunteer_ibfk_1` FOREIGN KEY (`patient`) REFERENCES `patient` (`pid`);
 
 --
+-- Constraints for table `equipment_request`
+--
+ALTER TABLE `equipment_request`
+  ADD CONSTRAINT `equipment_request_ibfk_1` FOREIGN KEY (`equipment`) REFERENCES `equipments` (`eid`),
+  ADD CONSTRAINT `equipment_request_ibfk_2` FOREIGN KEY (`patient`) REFERENCES `patient` (`pid`);
+
+--
 -- Constraints for table `medical_report`
 --
 ALTER TABLE `medical_report`
   ADD CONSTRAINT `medical_report_ibfk_1` FOREIGN KEY (`vid`) REFERENCES `volunteer` (`vid`);
+
+--
+-- Constraints for table `transport`
+--
+ALTER TABLE `transport`
+  ADD CONSTRAINT `transport_ibfk_1` FOREIGN KEY (`equipment`) REFERENCES `equipments` (`eid`),
+  ADD CONSTRAINT `transport_ibfk_2` FOREIGN KEY (`patient`) REFERENCES `patient` (`pid`),
+  ADD CONSTRAINT `transport_ibfk_3` FOREIGN KEY (`volunteer`) REFERENCES `volunteer` (`vid`),
+  ADD CONSTRAINT `transport_ibfk_4` FOREIGN KEY (`request_id`) REFERENCES `equipment_request` (`req_id`);
 
 --
 -- Constraints for table `work_report`

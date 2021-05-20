@@ -1,10 +1,17 @@
 <?php
 include "header.php";
 $k=$_GET['id'];
-$nm=mysqli_query($con,"select * from patient where mobile='$k' ");
-while ($rw4=mysqli_fetch_array($nm))
+$nm1=mysqli_query($con,"select * from patient inner join equipment_request on patient.pid=equipment_request.patient where equipment_request.req_id='$k' ");
+while ($rw4=mysqli_fetch_array($nm1))
 {
-    $name=$rw4['pname'];
+    $pname=$rw4['pname'];
+    $pid=$rw4['pid'];
+}
+$nm2=mysqli_query($con,"select * from equipments inner join equipment_request on equipments.eid=equipment_request.equipment where equipment_request.req_id='$k' ");
+while ($rw5=mysqli_fetch_array($nm2))
+{
+    $ename=$rw5['e_name'];
+    $eid=$rw5['eid'];
 }
 $vol=mysqli_query($con,"select * from volunteer inner join login on volunteer.mobile=login.uname where login.status='approved'");
 
@@ -23,8 +30,8 @@ $vol=mysqli_query($con,"select * from volunteer inner join login on volunteer.mo
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
-                                <li>Patient</a> <span class="bread-slash">/</span></li>
-                                <li><span class="bread-blod">Assign Volunteer</span></li>
+                                <li>Equipment</a> <span class="bread-slash">/</span></li>
+                                <li><span class="bread-blod">Assign Trabsport</span></li>
                             </ul>
                         </div>
                     </div>
@@ -39,19 +46,27 @@ $vol=mysqli_query($con,"select * from volunteer inner join login on volunteer.mo
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-status-wrap">
-                        <h4>Assign Volunteer</h4>
+                    <h4>Assign Transport</h4>
 
-                        <div class="asset-inner">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="sparkline13-list">
-                                        <form method="post">
-                                            <f class="sparkline13-graph">
-                                              <div class="datatable-dashv1-list custom-datatable-overright">
-                                                  <div class="form-group-inner">
-                                                      <label>Patient Name</label>
-                                                      <input readonly class="form-control" value="<?php echo $name?>" style="text-transform: capitalize;background-color:transparent;" />
-                                                  </div>
+                    <div class="asset-inner">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="sparkline13-list">
+                                    <form method="post">
+                                        <f class="sparkline13-graph">
+                                            <div class="datatable-dashv1-list custom-datatable-overright">
+                                                <div class="form-group-inner">
+                                                    <label>Patient ID</label>
+                                                    <input readonly class="form-control" value="<?php echo $pid?>" style="text-transform: capitalize;background-color:transparent;" />
+                                                </div>
+                                                <div class="form-group-inner">
+                                                    <label>Patient Name</label>
+                                                    <input readonly class="form-control" value="<?php echo $pname?>" style="text-transform: capitalize;background-color:transparent;" />
+                                                </div>
+                                                <div class="form-group-inner">
+                                                    <label>Equipment Name</label>
+                                                    <input readonly class="form-control" value="<?php echo $ename?>" style="text-transform: capitalize;background-color:transparent;" />
+                                                </div>
                                                 <select name="volunteer"  class="form-control" id="select1">
                                                     <option disabled selected>~ Select Volunteer ~</option>
                                                     <?php while ($rw_vol=mysqli_fetch_array($vol)){ ?>
@@ -62,20 +77,20 @@ $vol=mysqli_query($con,"select * from volunteer inner join login on volunteer.mo
                                                 <br/>
                                                 <br/>
                                                 <center><button id="send" type="submit" name="assign" class="btn btn-primary waves-effect waves-light" style="text-transform: uppercase">ASSIGN</button></center>
-                                              </div>
-                                        </form>
-                                    </div>
-                                    </div>
-
+                                            </div>
+                                    </form>
                                 </div>
                             </div>
 
                         </div>
+                    </div>
 
                 </div>
+
             </div>
         </div>
     </div>
+</div>
 </div>
 <?php
 if(isset($_POST['assign']))
@@ -83,28 +98,22 @@ if(isset($_POST['assign']))
     $volunteer=$_POST['volunteer'];
 
     $aDate = date('Y-m-d');
-    $sts= 'pending';
-    $sel=mysqli_query($con,"select * from login where uname='$k' and type='patient'");
-    while ($rw=mysqli_fetch_array($sel))
-    {
-        $l_id=$rw['login_id'];
-    }
-    $sel2=mysqli_query($con,"select * from patient where mobile='$k'");
-    $rw1=mysqli_fetch_array($sel2);
-    $patient=$rw1['pid'];
-    $ins="insert into assign_volunteer (volunteer,patient,assigned_on,ass_status) values('$volunteer','$patient','$aDate','$sts')";
+    $sts= 'assigned';
+
+
+    $ins="insert into transport (equipment,patient,volunteer,request_id,tr_status,tr_assdate) values('$eid','$pid','$volunteer','$k','$sts','$aDate')";
     $sq=mysqli_query($con,$ins);
     if($sq)
     {
-        $upt=mysqli_query($con,"update login set status='assigned' where login_id='$l_id'");
+        $upt=mysqli_query($con,"update equipment_request set status='assigned' where req_id='$k'");
 
         echo "<script>alert('SUCCESS')</script>";
-        echo "<script>window.location.href='view_patient.php'</script>";
+        echo "<script>window.location.href='view_equiprequest.php'</script>";
     }
     else
     {
         echo "<script>alert('FAILED')</script>";
-        echo "<script>window.location.href='view_patient.php'</script>";
+        echo "<script>window.location.href='view_equiprequest.php'</script>";
     }
 } ?>
 

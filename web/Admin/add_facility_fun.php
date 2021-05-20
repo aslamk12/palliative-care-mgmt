@@ -12,6 +12,7 @@ if(isset($_POST['sub']))
     $name=$_POST['name'];
     $stock=$_POST['stock'];
     $date=$_POST['date'];
+    $descp=$_POST['description'];
 
     $Image=$_FILES['img']['name'];
     $images = explode('.',$Image);
@@ -30,7 +31,7 @@ if(isset($_POST['sub']))
         $time = Time();
         $facility_image=$time.'.'.$extensionImage;
 
-        $sql = mysqli_query($con, "insert into equipments(e_name,e_stock,e_date,image)VALUES ('$name','$stock','$date','$facility_image')");
+        $sql = mysqli_query($con, "insert into equipments(e_name,e_stock,e_date,image,description)VALUES ('$name','$stock','$date','$facility_image','$descp')");
         if ($sql) {
             echo "<script>alert('Details Added')</script>";
             echo "<script>window.location.href='add_facility.php'</script>";

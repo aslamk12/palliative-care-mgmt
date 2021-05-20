@@ -112,7 +112,7 @@ include "header.php";
                 </div>
                 <div class="product-status-wrap">
 
-                    <h4>Assigned Patients</h4>
+                    <h4>Assigned Equipment Requests</h4>
 
                     <div class="asset-inner">
                         <div class="row">
@@ -126,11 +126,14 @@ include "header.php";
                                                 <thead>
                                                 <tr>
                                                     <th data-field="id">No</th>
-                                                    <th data-field="name" data-editable="true">Name</th>
-                                                    <th data-field="gender" data-editable="true">Gender</th>
+                                                    <th data-field="pname" data-editable="true">Patient Name</th>
+                                                    <th data-field="mobile" data-editable="true">Mobile</th>
                                                     <th data-field="place" data-editable="true">Place</th>
-                                                    <th data-field="disease" data-editable="true">Disease</th>
-                                                    <th data-field="nurse" data-editable="true">Nurse</th>
+                                                    <th data-field="panchayath" data-editable="true">Panchayath</th>
+                                                    <th data-field="address" data-editable="true">Address</th>
+                                                    <th data-field="ename" data-editable="true">Equipment Name</th>
+                                                    <th data-field="vname" data-editable="true">Assigned Volunteer</th>
+                                                    <th data-field="status" data-editable="true">Status</th>
 
 
 
@@ -139,16 +142,19 @@ include "header.php";
                                                 <tbody style="text-transform: capitalize">
                                                 <?php
                                                 $i = 1;
-                                                $view = mysqli_query($con, "select *from patient inner join assign_nurse on patient.pid=assign_nurse.patient inner join nurse on  assign_nurse.nurse=nurse.nid where assign_nurse.ass_status='assigned' ");
+                                                $view = mysqli_query($con, "select *from patient inner join transport on patient.pid=transport.patient inner join equipments on  transport.equipment=equipments.eid inner join volunteer on transport.volunteer=volunteer.vid where transport.tr_status='assigned' ");
                                                 while ($row = mysqli_fetch_array($view)) {
                                                     ?>
                                                     <tr>
                                                         <td><?php echo $i ?></td>
                                                         <td><?php echo $row['pname'] ?></td>
-                                                        <td><?php echo $row['gender'] ?></td>
+                                                        <td><?php echo $row['mobile'] ?></td>
                                                         <td><?php echo $row['place'] ?></td>
-                                                        <td><?php echo $row['disease'] ?></td>
+                                                        <td><?php echo $row['panchayath'] ?></td>
+                                                        <td><?php echo $row['address'] ?></td>
+                                                        <td><?php echo $row['e_name'] ?></td>
                                                         <td><?php echo $row['name'] ?></td>
+                                                        <td><?php echo $row['tr_status'] ?></td>
 
 
 

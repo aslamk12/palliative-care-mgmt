@@ -68,6 +68,10 @@ $ro=mysqli_fetch_array($sq);
                                                             <div class="form-group">
                                                                 <input name="date" type="date" class="form-control" placeholder="Date of giving" value="<?php echo $ro['e_date'] ?>">
                                                             </div>
+                                                            <div class="form-group">
+
+                                                                <input name="description" type="text" class="form-control" placeholder="Description" value="<?php echo $ro['description'] ?>">
+                                                            </div>
 
                                                         </div>
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

@@ -95,6 +95,10 @@ $sql=mysqli_query($con,"select * from equipments");
                                                             <label>image</label>
                                                             <input name="img" type="file" class="form-control" required="">
                                                         </div>
+                                                        <div class="form-group">
+                                                            <label>description</label>
+                                                            <input name="description" type="text" class="form-control" placeholder="Description" required="">
+                                                        </div>
 
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -142,6 +146,7 @@ $sql=mysqli_query($con,"select * from equipments");
                                                                         <th>Name of Facility</th>
                                                                         <th>Stock</th>
                                                                         <th>Last Date</th>
+                                                                        <th>Description</th>
                                                                         <th>Edit</th>
                                                                         <th>Delete</th>
                                                                     </tr>
@@ -155,6 +160,7 @@ $sql=mysqli_query($con,"select * from equipments");
                                                                             <td><?php echo $ro['e_name'] ?></td>
                                                                             <td><?php echo $ro['e_stock'] ?></td>
                                                                             <td><?php echo date('d M Y',strtotime($ro['e_date'])) ?></td>
+                                                                            <td><?php echo $ro['description'] ?></td>
                                                                             <td>
                                                                                 <a href="edit_facility.php?eid=<?php echo $ro['eid'] ?>" data-toggle="tooltip" title="Edit" class="pd-setting-ed" ><i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size: 40px"></i></a>
                                                                             </td>

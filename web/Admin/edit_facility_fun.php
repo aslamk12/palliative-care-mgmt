@@ -18,6 +18,7 @@ if(isset($_POST['sub']))
     $stock=$_POST['stock'];
     $date=$_POST['date'];
     $img = $_FILES['img']['name'];
+    $descp=$_POST['description'];
 
     if ($img == "") {
         $new = $old;
@@ -25,7 +26,7 @@ if(isset($_POST['sub']))
         $new = $img;
     }
 
-    $sql = mysqli_query($con, "update equipments set e_name='$name',e_stock='$stock',e_date='$date',image='$new' WHERE eid='$eid'");
+    $sql = mysqli_query($con, "update equipments set e_name='$name',e_stock='$stock',e_date='$date',image='$new',description='$descp' WHERE eid='$eid'");
     if ($sql) {
         move_uploaded_file($_FILES['img']['tmp_name'], '../facility/'.$new);
         echo "<script>alert('Details Updated')</script>";

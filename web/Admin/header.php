@@ -125,13 +125,8 @@ include "../connection.php";
                         </ul>
                     </li>
 
-                    <li>
-                        <a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Patient Request</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Patient's Facility Request" href="view_fac_req.php"><span class="mini-sub-pro">Facility Request</span></a></li>
-                            <li><a title="Patient's Service Request" href="view_service_req.php"><span class="mini-sub-pro">Service Request</span></a></li>
-                        </ul>
-                    </li>
+                    <li><a title="Equipment Request" href="view_equiprequest.php"><span class="educate-icon educate-event icon-wrap sub-icon-mg"></span><span class="mini-click-non">Equipment Requests</span></a></li>
+
                     <li>
                         <a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Add More</span></a>
                         <ul class="submenu-angle" aria-expanded="false">

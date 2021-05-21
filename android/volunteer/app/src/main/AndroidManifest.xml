@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Volunteer"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SendReportlistActivity"></activity>
+        <activity android:name=".TransportActivity"></activity>
+        <activity android:name=".TransporthomeActivity" />
+        <activity android:name=".SendReportlistActivity" />
         <activity android:name=".PatientDetailsActivity" />
         <activity android:name=".PatientVerificationActivity" />
         <activity android:name=".UploadreportActivity" />

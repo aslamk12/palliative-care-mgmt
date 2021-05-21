@@ -87,6 +87,7 @@
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_transport_foreground"/>
                     <TextView
+                        android:id="@+id/tv_transport"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Transportataion"

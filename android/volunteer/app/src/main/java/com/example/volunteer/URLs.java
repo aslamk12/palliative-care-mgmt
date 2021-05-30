@@ -10,4 +10,5 @@ public class URLs {
     public static final String URL_VIEWPATIENTDETAILS = "http://192.168.42.232/santhwanam/viewpatientdetails.php";
     public static final String URL_UPLOAD_REPORT = "http://192.168.42.232/santhwanam/uploadreport.php";
     public static final String URL_CONFIRMPATIENT = "http://192.168.42.232/santhwanam/confirmpatient.php";
+    public static final String URL_CONFIRMTRANSPORT = "http://192.168.42.232/santhwanam/confirmtransport.php";
 }

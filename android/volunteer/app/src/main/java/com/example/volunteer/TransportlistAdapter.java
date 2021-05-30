@@ -55,8 +55,17 @@ public class TransportlistAdapter extends RecyclerView.Adapter<TransportlistAdap
                 Intent intent;
                 Context context = mCtx;
 
-                intent = new Intent(context, PatientDetailsActivity.class);
+                intent = new Intent(context, TransportDetails.class);
                 intent.putExtra("pid",transportlist.getPid());
+                intent.putExtra("pname",transportlist.getPatient_name());
+                intent.putExtra("mobile",transportlist.getPatient_mobile());
+                intent.putExtra("equip",transportlist.getE_name());
+                intent.putExtra("place",transportlist.getPat_place());
+                intent.putExtra("panchayath",transportlist.getPat_panchayath());
+                intent.putExtra("ward",transportlist.getWard());
+                intent.putExtra("address",transportlist.getPat_address());
+                intent.putExtra("eid",transportlist.getEid());
+                intent.putExtra("tr_id",transportlist.getTr_id());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mCtx.startActivity(intent);
             }

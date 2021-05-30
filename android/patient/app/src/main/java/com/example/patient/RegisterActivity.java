@@ -116,12 +116,12 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         }
         else if (edt_panchayath.getText().toString().isEmpty())
         {
-            edt_panchayath.setError("Please enter your house name!");
+            edt_panchayath.setError("Please enter your panchayath!");
             edt_panchayath.requestFocus();
         }
         else if (edt_ward.getText().toString().isEmpty())
         {
-            edt_ward.setError("Please enter your house name!");
+            edt_ward.setError("Please enter your ward!");
             edt_ward.requestFocus();
         }
         else

@@ -130,7 +130,7 @@ include "../connection.php";
                     <li>
                         <a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Add More</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Blood donors list" href="report_select.php"><span class="mini-sub-pro">Blood Donors List</span></a></li>
+                            <li><a title="Blood donors list" href="add_blooddonor.php"><span class="mini-sub-pro">Blood Donors List</span></a></li>
                             <li><a title="Training Classes" href="view_service_req.php"><span class="mini-sub-pro">Training Classes</span></a></li>
                         </ul>
                     </li>

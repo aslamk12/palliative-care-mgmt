@@ -1,10 +1,10 @@
 <?php
-session_start();
-$aid=$_SESSION['aid'];
-if(!$aid)
-{
-    header('location:logout.php');
-}
+//session_start();
+//$aid=$_SESSION['aid'];
+//if(!$aid)
+//{
+//    header('location:logout.php');
+//}
 include "../connection.php";
 
 if(isset($_POST['sub']))

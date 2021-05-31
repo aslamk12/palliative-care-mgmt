@@ -118,6 +118,7 @@
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_training_foreground"/>
                     <TextView
+                        android:id="@+id/tut"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Training Class"
@@ -149,6 +150,7 @@
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_blood_foreground"/>
                     <TextView
+                        android:id="@+id/tv_bd"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Blood Donor List"

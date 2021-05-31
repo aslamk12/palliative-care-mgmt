@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
-    TextView tv_equipments,tv_medicalstatus;
+    TextView tv_equipments,tv_medicalstatus,tv_tut,tv_bd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +50,8 @@ public class HomeActivity extends AppCompatActivity {
 
         tv_equipments=(TextView)findViewById(R.id.tv_equipments);
         tv_medicalstatus=(TextView)findViewById(R.id.tv_medstatus);
+        tv_tut=(TextView)findViewById(R.id.tut);
+        tv_bd=(TextView)findViewById(R.id.tv_bd);
         tv_equipments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,6 +66,24 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent regIntent = new Intent(HomeActivity.this,MedicalStatus.class);
+                startActivity(regIntent);
+
+            }
+        });
+        tv_tut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent regIntent = new Intent(HomeActivity.this,TutorialHome.class);
+                startActivity(regIntent);
+
+            }
+        });
+        tv_bd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent regIntent = new Intent(HomeActivity.this,BlooddonorHome.class);
                 startActivity(regIntent);
 
             }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 31, 2021 at 08:20 AM
+-- Generation Time: May 31, 2021 at 10:10 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -257,6 +257,30 @@ INSERT INTO `patient` (`pid`, `pname`, `mobile`, `dob`, `gender`, `place`, `panc
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sponsorship`
+--
+
+CREATE TABLE `sponsorship` (
+  `sp_id` int(5) NOT NULL,
+  `sp_name` varchar(15) NOT NULL,
+  `sp_address` varchar(50) NOT NULL,
+  `sp_mobile` bigint(12) NOT NULL,
+  `sp_place` varchar(20) NOT NULL,
+  `sp_date` date NOT NULL,
+  `sp_item` varchar(20) NOT NULL,
+  `sp_descp` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sponsorship`
+--
+
+INSERT INTO `sponsorship` (`sp_id`, `sp_name`, `sp_address`, `sp_mobile`, `sp_place`, `sp_date`, `sp_item`, `sp_descp`) VALUES
+(1, 'Saleem', 'kallingal', 8136024560, 'edapal', '2019-05-31', 'wheel chair', 'abcdrfg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `transport`
 --
 
@@ -409,6 +433,12 @@ ALTER TABLE `patient`
   ADD PRIMARY KEY (`pid`);
 
 --
+-- Indexes for table `sponsorship`
+--
+ALTER TABLE `sponsorship`
+  ADD PRIMARY KEY (`sp_id`);
+
+--
 -- Indexes for table `transport`
 --
 ALTER TABLE `transport`
@@ -489,6 +519,12 @@ ALTER TABLE `nurse`
 --
 ALTER TABLE `patient`
   MODIFY `pid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `sponsorship`
+--
+ALTER TABLE `sponsorship`
+  MODIFY `sp_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `transport`

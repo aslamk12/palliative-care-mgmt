@@ -1,6 +1,6 @@
 <?php
 include "header.php";
-$sql=mysqli_query($con,"select * from blooddonor");
+$sql=mysqli_query($con,"select * from sponsorship");
 ?>
 <div class="header-advance-area">
 
@@ -19,7 +19,7 @@ $sql=mysqli_query($con,"select * from blooddonor");
                                 <ul class="breadcome-menu">
                                     <li><a href="index.php">Home</a> <span class="bread-slash">/</span>
                                     </li>
-                                    <li><span class="bread-blod">Add Blood Donor list</span>
+                                    <li><span class="bread-blod">Add Sponsorship</span>
                                     </li>
                                 </ul>
                             </div>
@@ -81,23 +81,9 @@ $sql=mysqli_query($con,"select * from blooddonor");
                                                             <input name="name" type="text" class="form-control" placeholder="Name" required="">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label>Blood Group</label>
-
-
-                                                        <select name="group"  class="form-control" id="select1">
-                                                            <option disabled selected>~ Select Blood Group ~</option>
-                                                            <option value="A+ve">A+ve</option>
-                                                            <option value="A-ve">A-ve</option>
-                                                            <option value="B+ve">B+ve</option>
-                                                            <option value="B-ve">B-ve</option>
-                                                            <option value="O+ve">O+ve</option>
-                                                            <option value="O-ve">O-ve</option>
-                                                            <option value="AB+ve">AB+ve</option>
-                                                            <option value="AB-ve">AB-ve</option>
-
-                                                        </select>
+                                                            <label>Address</label>
+                                                            <input name="address" type="text" class="form-control" placeholder="Name" required="">
                                                         </div>
-
                                                         <div class="form-group">
                                                             <label>Contact</label>
                                                             <input name="mobile" type="text" onkeypress="javascript:return isNumber(event)" maxlength="10" i class="form-control" placeholder="Contact" required="" style="text-transform: capitalize">
@@ -105,6 +91,18 @@ $sql=mysqli_query($con,"select * from blooddonor");
                                                         <div class="form-group">
                                                             <label>Place</label>
                                                             <input name="place" type="text" class="form-control" placeholder="Place" required="">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Date</label>
+                                                            <input name="date" type="date" class="form-control" max="<?php echo date('Y-01-01') ?>" required="">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Product/Cash</label>
+                                                            <input name="sitem" type="text" class="form-control" placeholder="Place" required="">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Description</label>
+                                                            <input name="descp" type="text" class="form-control" placeholder="Place" required="">
                                                         </div>
 
                                                     </div>
@@ -135,21 +133,24 @@ $sql=mysqli_query($con,"select * from blooddonor");
                                 <?php
                                 if(isset($_POST['sub']))
                                 {
-                                $name=$_POST['name'];
-                                $group=$_POST['group'];
-                                $mobile=$_POST['mobile'];
-                                $place=$_POST['place'];
+                                    $name=$_POST['name'];
+                                    $address=$_POST['address'];
+                                    $mobile=$_POST['mobile'];
+                                    $place=$_POST['place'];
+                                    $date=$_POST['date'];
+                                    $sitem=$_POST['sitem'];
+                                    $descp=$_POST['descp'];
 
 
-                                $sql = mysqli_query($con, "insert into blooddonor(bd_name,bd_group,bd_mobile,bd_place)VALUES ('$name','$group','$mobile','$place')");
-                                if ($sql) {
-                                echo "<script>alert('Details Added')</script>";
-                                echo "<script>window.location.href='add_blooddonor.php'</script>";
-                                } else {
-                                echo "<script>alert('Error,Try again')</script>";
-                                echo "<script>window.location.href='add_blooddonor.php'</script>";
+                                    $sql = mysqli_query($con, "insert into sponsorship(sp_name,sp_address,sp_mobile,sp_place,sp_date,sp_item,sp_descp)VALUES ('$name','$address','$mobile','$place','$date','$sitem','$descp')");
+                                    if ($sql) {
+                                        echo "<script>alert('Details Added')</script>";
+                                        echo "<script>window.location.href='add_sponsorship.php'</script>";
+                                    } else {
+                                        echo "<script>alert('Error,Try again')</script>";
+                                        echo "<script>window.location.href='add_sponsorship.php'</script>";
 
-                                }
+                                    }
                                 }
                                 ?>
                             </div>
@@ -169,10 +170,13 @@ $sql=mysqli_query($con,"select * from blooddonor");
                                                                 <table>
                                                                     <tr>
                                                                         <th>No</th>
-                                                                        <th>Name</th>
-                                                                        <th>Blood Group</th>
+                                                                        <th>Sponsor Name</th>
+                                                                        <th>Address</th>
                                                                         <th>Contact</th>
                                                                         <th>Place</th>
+                                                                        <th>Date</th>
+                                                                        <th>Sponsored Item/Cash</th>
+                                                                        <th>Description</th>
                                                                         <th>Delete</th>
                                                                     </tr>
                                                                     <?php
@@ -181,12 +185,15 @@ $sql=mysqli_query($con,"select * from blooddonor");
                                                                         ?>
                                                                         <tr>
                                                                             <td><?php echo $i ?></td>
-                                                                            <td><?php echo $ro['bd_name'] ?></td>
-                                                                            <td><?php echo $ro['bd_group'] ?></td>
-                                                                            <td><?php echo $ro['bd_mobile'] ?></td>
-                                                                            <td><?php echo $ro['bd_place'] ?></td>
+                                                                            <td><?php echo $ro['sp_name'] ?></td>
+                                                                            <td><?php echo $ro['sp_address'] ?></td>
+                                                                            <td><?php echo $ro['sp_mobile'] ?></td>
+                                                                            <td><?php echo $ro['sp_place'] ?></td>
+                                                                            <td><?php echo $ro['sp_date'] ?></td>
+                                                                            <td><?php echo $ro['sp_item'] ?></td>
+                                                                            <td><?php echo $ro['sp_descp'] ?></td>
                                                                             <td>
-                                                                                <a href="delete_blooddonor.php?bdid=<?php echo $ro['bd_id'] ?>" data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true" style="font-size: 40px"></i></a>
+                                                                                <a href="delete_sponsorship.php?spid=<?php echo $ro['sp_id'] ?>" data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true" style="font-size: 40px"></i></a>
                                                                             </td>
                                                                         </tr>
                                                                         <?php
@@ -212,5 +219,6 @@ $sql=mysqli_query($con,"select * from blooddonor");
 <?php
 include "footer.php";
 ?>
+
 
 

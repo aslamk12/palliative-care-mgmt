@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Patient"
         android:usesCleartextTraffic="true">
-        <activity android:name=".BlooddonorHome"></activity>
+        <activity android:name=".BloodDonorActivity"></activity>
+        <activity android:name=".BlooddonorHome" />
         <activity android:name=".TutorialActivity" />
         <activity android:name=".TutorialHome" />
         <activity android:name=".CurrentEquipActivity" />

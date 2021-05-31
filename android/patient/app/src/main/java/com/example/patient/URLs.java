@@ -8,6 +8,7 @@ public class URLs {
     public static final String URL_EDITPROFILE = ROOT_URL + "editprofile";
     public static final String URL_VIEW_EQUIP = "http://192.168.42.232/santhwanam/viewequip.php";
     public static final String URL_VIEW_TUTORIAL = "http://192.168.42.232/santhwanam/viewtutorial.php";
+    public static final String URL_VIEW_BD = "http://192.168.42.232/santhwanam/viewbd.php";
     public static final String URL_CUREQUIP = "http://192.168.42.232/santhwanam/curequip.php";
     public static final String URL_EQUIPMENT_DETAILS = "http://192.168.42.232/santhwanam/equipmentdetails.php";
     public static final String URL_SEND_REQUEST = "http://192.168.42.232/santhwanam/sendrequest.php";

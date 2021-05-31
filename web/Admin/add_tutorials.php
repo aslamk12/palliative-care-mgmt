@@ -120,9 +120,12 @@ $sql=mysqli_query($con,"select * from tutorials");
                                     $title=$_POST['title'];
                                     $url=$_POST['url'];
                                     $descp=$_POST['descp'];
+                                    $array_link = (explode("/",$url));
+                                    $video_id = $array_link[3];
 
 
-                                    $sql = mysqli_query($con, "insert into tutorials(tut_name,tut_url,tut_description)VALUES ('$title','$url','$descp')");
+
+                                    $sql = mysqli_query($con, "insert into tutorials(tut_name,tut_url,tut_description)VALUES ('$title','$video_id','$descp')");
                                     if ($sql) {
                                         echo "<script>alert('Details Added')</script>";
                                         echo "<script>window.location.href='add_tutorials.php'</script>";

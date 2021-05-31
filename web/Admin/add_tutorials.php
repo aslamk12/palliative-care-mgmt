@@ -37,7 +37,7 @@ $sql=mysqli_query($con,"select * from tutorials");
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-payment-inner-st">
                     <ul id="myTabedu1" class="tab-review-design">
-                        <li class="active" style="margin-left: 299px"><a href="#description">Tutorilas</a></li>
+                        <li class="active" style="margin-left: 299px"><a href="#description">Tutorials</a></li>
                         <li><a href="#reviews"> View Details</a></li>
                     </ul>
                     <div id="myTabContent" class="tab-content custom-product-edit">
@@ -77,22 +77,16 @@ $sql=mysqli_query($con,"select * from tutorials");
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-left: 299px">
 
                                                         <div class="form-group">
-                                                            <label>Name</label>
-                                                            <input name="name" type="text" class="form-control" placeholder="Name" required="">
+                                                            <label>Title</label>
+                                                            <input name="title" type="text" class="form-control" placeholder="Title" required="">
                                                         </div>
-
                                                         <div class="form-group">
-                                                            <label>url</label>
-                                                            <input name="url" type="text" class="form-control" placeholder="URL" maxlength="" onkeypress="javascript:return isNumber(event)" required="">
+                                                            <label>URL</label>
+                                                            <input name="url" type="text" class="form-control" placeholder="URL" required="">
                                                         </div>
-
-<!--                                                        <div class="form-group res-mg-t-15">-->
-<!--                                                            <label>image</label>-->
-<!--                                                            <input name="img" type="file" class="form-control" required="">-->
-<!--                                                        </div>-->
                                                         <div class="form-group">
-                                                            <label>description</label>
-                                                            <input name="description" type="text" class="form-control" placeholder="Description" required="">
+                                                            <label>Description</label>
+                                                            <input name="descp" type="text" class="form-control" placeholder="Description" required="">
                                                         </div>
 
                                                     </div>
@@ -118,49 +112,27 @@ $sql=mysqli_query($con,"select * from tutorials");
                                                 }
                                             </script>
                                         </div>
-                                        <?php
-                                        if(isset($_POST['sub']))
-                                        {
-                                        $name=$_POST['name'];
-                                        $url=$_POST['url'];
-                                        $descp=$_POST['description'];
-
-//                                            $Image=$_FILES['img']['name'];
-//                                            $images = explode('.',$Image);
-//                                            $extensionImage=end($images);
-//                                            $allowedExtsImage = array("jpeg", "jpg", "png");
-//                                            $time = Time();
-//                                            $certificate=$time.'.'.$extensionImage;
-//
-//                                            if(in_array($extensionImage, $allowedExtsImage))
-//                                            {
-//                                                move_uploaded_file($_FILES['img']['tmp_name'], 'tutorials/'.$certificate);
-//                                                $Image=$_FILES['img']['name'];
-//                                                $images = explode('.',$Image);
-//                                                $extensionImage=end($images);
-//                                                $allowedExtsImage = array("jpeg", "jpg", "png");
-//                                                $time = Time();
-//                                                $tutorial_image=$time.'.'.$extensionImage;
-
-                                                    $cat = mysqli_query($con, "insert into tutorilas(tut_name,tut_url,tut_description,image)values('$name','$url','$descp','')");
-                                                    if ($cat) {
-                                                        echo "<script>alert('SUCCESS')</script>";
-                                                        echo "<script>window.location.href='add_tutorials.php'</script>";
-                                                    } else {
-                                                        echo "<script>alert('FAILED')</script>";
-                                                        echo "<script>window.location.href='add_tutorials.php'</script>";
-                                                    }
-                                                //}
-
-//                                            else
-//                                            {
-//                                                echo "<script>alert('Only jpg/ jpeg format allowed')</script>";
-//                                                echo "<script>window.location.href='add_tutorials.php'</script>";
-//                                            }
-                                        }
-                                        ?>
                                     </div>
                                 </div>
+                                <?php
+                                if(isset($_POST['sub']))
+                                {
+                                    $title=$_POST['title'];
+                                    $url=$_POST['url'];
+                                    $descp=$_POST['descp'];
+
+
+                                    $sql = mysqli_query($con, "insert into tutorials(tut_name,tut_url,tut_description)VALUES ('$title','$url','$descp')");
+                                    if ($sql) {
+                                        echo "<script>alert('Details Added')</script>";
+                                        echo "<script>window.location.href='add_tutorials.php'</script>";
+                                    } else {
+                                        echo "<script>alert('Error,Try again')</script>";
+                                        echo "<script>window.location.href='add_tutorials.php'</script>";
+
+                                    }
+                                }
+                                ?>
                             </div>
                         </div>
                         <div class="product-tab-list tab-pane fade" id="reviews">
@@ -172,14 +144,13 @@ $sql=mysqli_query($con,"select * from tutorials");
                                                 <div class="row">
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="product-status-wrap">
-                                                            <h4>Tutorial List</h4>
+                                                            <h4>Tutorials</h4>
 
                                                             <div class="asset-inner">
                                                                 <table>
                                                                     <tr>
                                                                         <th>No</th>
-                                                                        <th>Image</th>
-                                                                        <th>Name of Tutorials</th>
+                                                                        <th>Title</th>
                                                                         <th>URL</th>
                                                                         <th>Description</th>
                                                                         <th>Delete</th>
@@ -190,14 +161,11 @@ $sql=mysqli_query($con,"select * from tutorials");
                                                                         ?>
                                                                         <tr>
                                                                             <td><?php echo $i ?></td>
-                                                                            <td><img src="tutorials/<?php echo $ro['image'] ?>" alt="" /></td>
                                                                             <td><?php echo $ro['tut_name'] ?></td>
                                                                             <td><?php echo $ro['tut_url'] ?></td>
-
                                                                             <td><?php echo $ro['tut_description'] ?></td>
-
                                                                             <td>
-                                                                                <a href="delete_facility.php?eid=<?php echo $ro['tut_id'] ?>" data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true" style="font-size: 40px"></i></a>
+                                                                                <a href="delete_tutorials.php?tutid=<?php echo $ro['tut_id'] ?>" data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true" style="font-size: 40px"></i></a>
                                                                             </td>
                                                                         </tr>
                                                                         <?php
@@ -223,5 +191,6 @@ $sql=mysqli_query($con,"select * from tutorials");
 <?php
 include "footer.php";
 ?>
+
 
 

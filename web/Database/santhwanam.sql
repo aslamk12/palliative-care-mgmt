@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 31, 2021 at 10:58 AM
+-- Generation Time: May 31, 2021 at 11:17 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -333,11 +333,17 @@ INSERT INTO `transport` (`tid`, `equipment`, `patient`, `volunteer`, `request_id
 
 CREATE TABLE `tutorials` (
   `tut_id` int(5) NOT NULL,
-  `tut_name` int(20) NOT NULL,
-  `tut_url` int(150) NOT NULL,
-  `tut_description` int(150) NOT NULL,
-  `image` int(250) NOT NULL
+  `tut_name` varchar(20) NOT NULL,
+  `tut_url` varchar(250) NOT NULL,
+  `tut_description` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tutorials`
+--
+
+INSERT INTO `tutorials` (`tut_id`, `tut_name`, `tut_url`, `tut_description`) VALUES
+(1, 'pen making', 'https://www.youtube.com/watch?v=7ZTPFy65MXU', 'How to make paper pen very easly in malayalam paper pen making');
 
 -- --------------------------------------------------------
 
@@ -570,7 +576,7 @@ ALTER TABLE `transport`
 -- AUTO_INCREMENT for table `tutorials`
 --
 ALTER TABLE `tutorials`
-  MODIFY `tut_id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `tut_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `volunteer`

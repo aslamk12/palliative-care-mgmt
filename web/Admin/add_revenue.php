@@ -19,7 +19,7 @@ $sql=mysqli_query($con,"select * from revenue");
                                 <ul class="breadcome-menu">
                                     <li><a href="index.php">Home</a> <span class="bread-slash">/</span>
                                     </li>
-                                    <li><span class="bread-blod">Add Sponsorship</span>
+                                    <li><span class="bread-blod">Add Revenue</span>
                                     </li>
                                 </ul>
                             </div>

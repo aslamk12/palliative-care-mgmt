@@ -117,6 +117,102 @@ if (isset($_GET['apicall']))
 
             }
             break;
+             case 'editprofile':
+
+            if (isTheseParametersAvailable(array('name','place','panchayath','address','vid')))
+            {
+                $name = $_POST['name'];
+                $place = $_POST['place'];
+                $panchayath=$_POST['panchayath'];
+                $address=$_POST['address'];
+                $vid=$_POST['vid'];
+
+
+                    $stmt = $conn->prepare("UPDATE  volunteer SET name = ?, place = ?, panchayath = ?, address = ? WHERE vid = ? ");
+                    $stmt->bind_param("sssss",$name,$place,$panchayath,$address,$vid);
+
+
+                    if ($stmt->execute())
+                    {
+                    $stmt = $conn->prepare("SELECT vid, name, mobile, dob, place, panchayath, address from volunteer where vid=?" );
+                    $stmt->bind_param("s",$vid);
+                    $stmt->execute();
+                    $stmt->bind_result($vid,$name, $mobile, $dob, $place, $panchayath, $address);
+                    $stmt->fetch();
+
+                    $user = array
+                    (
+                        'vid'=>$vid,
+                        'fullname'=>$name,
+                        'mobile'=>$mobile,
+                        'place'=>$place,
+                        'dob'=>$dob,
+                        'panchayath'=>$panchayath,
+                        'address'=>$address,
+                    );
+
+                        $stmt->close();
+
+                        $response['error']= false;
+                        $response['message'] = 'Profile Updated Successfully';
+                        $response['user'] = $user;
+                    }
+                }
+
+            else
+            {
+                $response['error'] = true;
+                $response['message'] = 'required parameters are not available';
+
+            }
+            break;
+            case 'editpass':
+
+            if (isTheseParametersAvailable(array('password','mobile')))
+            {
+                $password = $_POST['password'];
+                $mobile = $_POST['mobile'];
+
+
+
+                $stmt = $conn->prepare("UPDATE  login SET password = ? WHERE uname = ? ");
+                $stmt->bind_param("ss",$password,$mobile);
+
+
+                if ($stmt->execute())
+                {
+                    $stmt = $conn->prepare("SELECT vid, name, mobile, dob, place, panchayath, address from volunteer where mobile=?" );
+                    $stmt->bind_param("s",$mobile);
+                    $stmt->execute();
+                    $stmt->bind_result($vid,$name, $mobile, $dob, $place, $panchayath, $address);
+                    $stmt->fetch();
+
+                    $user = array
+                    (
+                        'vid'=>$vid,
+                        'fullname'=>$name,
+                        'mobile'=>$mobile,
+                        'place'=>$place,
+                        'dob'=>$dob,
+                        'panchayath'=>$panchayath,
+                        'address'=>$address,
+                    );
+
+                    $stmt->close();
+
+                    $response['error']= false;
+                    $response['message'] = 'Password Changed Successfully';
+                    $response['user'] = $user;
+                }
+            }
+
+            else
+            {
+                $response['error'] = true;
+                $response['message'] = 'required parameters are not available';
+
+            }
+            break;
         default:
             $response['error'] = true;
             $response['message'] = 'Invalid operation Called';

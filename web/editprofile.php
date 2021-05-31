@@ -9,13 +9,13 @@ if (isTheseParametersAvailable(array('pname','address','place','pincode','pancha
                 $place = $_POST['place'];
                 $pincode = $_POST['pincode'];
                 $panchayath = $_POST['panchayath'];
-                $ward = $_POST['ward'];
+                //$ward = $_POST['ward'];
               
                 $pid=$_POST['pid'];
 
 
-                    $stmt = $conn->prepare("UPDATE  patient SET pname = ?, place = ?, panchayath = ?, ward = ?, address = ?,pincode = ? WHERE pid = ? ");
-                    $stmt->bind_param("sssssss",$pname,$place,$panchayath,$ward,$address,$pincode,$pid);
+                    $stmt = $conn->prepare("UPDATE  patient SET pname = ?, place = ?, panchayath = ?, address = ?,pincode = ? WHERE pid = ? ");
+                    $stmt->bind_param("ssssss",$pname,$place,$panchayath,$address,$pincode,$pid);
 
 
                     if ($stmt->execute())

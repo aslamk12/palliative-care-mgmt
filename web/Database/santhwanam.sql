@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 20, 2021 at 03:59 PM
+-- Generation Time: May 31, 2021 at 08:20 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -70,6 +70,29 @@ INSERT INTO `assign_volunteer` (`assv_id`, `volunteer`, `patient`, `assigned_on`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `blooddonor`
+--
+
+CREATE TABLE `blooddonor` (
+  `bd_id` int(5) NOT NULL,
+  `bd_name` varchar(15) NOT NULL,
+  `bd_group` varchar(5) NOT NULL,
+  `bd_mobile` bigint(12) NOT NULL,
+  `bd_place` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `blooddonor`
+--
+
+INSERT INTO `blooddonor` (`bd_id`, `bd_name`, `bd_group`, `bd_mobile`, `bd_place`) VALUES
+(1, 'jazir', 'A+ve', 8085784512, 'edapal'),
+(3, 'shafeed', 'O+ve', 8798546532, 'edapal'),
+(4, 'savad', 'AB+ve', 7418529650, 'edapal');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `equipments`
 --
 
@@ -87,8 +110,9 @@ CREATE TABLE `equipments` (
 --
 
 INSERT INTO `equipments` (`eid`, `e_name`, `e_stock`, `e_date`, `image`, `description`) VALUES
-(2, 'wheelchair', 16, '2021-05-07', '1621492338.jpg', 'very good equipments'),
-(3, 'water bed', 5, '2021-05-02', '1621492462.jpg', 'abcdefg');
+(2, 'wheelchairs', 18, '2021-05-07', '1621492338.jpg', 'very good equipments'),
+(3, 'water bed', 5, '2021-05-02', '1621492462.jpg', 'abcdefg'),
+(9, 'abcd', 4, '2021-05-15', '1621580247.jpg', 'good condition');
 
 -- --------------------------------------------------------
 
@@ -108,7 +132,12 @@ CREATE TABLE `equipment_request` (
 --
 
 INSERT INTO `equipment_request` (`req_id`, `patient`, `equipment`, `status`) VALUES
-(3, 1, 2, 'assigned');
+(3, 1, 2, 'assigned'),
+(4, 4, 2, 'assigned'),
+(5, 4, 3, 'pending'),
+(6, 3, 2, 'pending'),
+(7, 3, 3, 'assigned'),
+(8, 1, 3, 'pending');
 
 -- --------------------------------------------------------
 
@@ -132,10 +161,10 @@ INSERT INTO `login` (`login_id`, `uname`, `password`, `type`, `status`) VALUES
 (1, 'admin@gmail.com', 'admin123', 'admin', ''),
 (4, '7736918949', 'aslam123', 'volunteer', 'approved'),
 (5, '9567105862', 'qwerty', 'volunteer', 'pending'),
-(6, '9876543210', 'aslam123', 'patient', 'approved'),
+(6, '9876543210', 'aslam1234', 'patient', 'approved'),
 (8, '9865321470', 'anas123', 'patient', 'approved'),
 (9, '9871234560', 'althaf123', 'volunteer', 'approved'),
-(11, '8136877801', '12345678', 'nurse', 'approved'),
+(11, '8136877801', '123456789', 'nurse', 'approved'),
 (12, '9605314236', 'anees123', 'patient', 'approved'),
 (13, '8132074560', 'aflah123', 'patient', 'pending'),
 (14, '8157012019', 'radha123', 'patient', 'pending'),
@@ -189,7 +218,7 @@ CREATE TABLE `nurse` (
 --
 
 INSERT INTO `nurse` (`nid`, `name`, `mobile`, `gender`, `dob`, `place`, `address`) VALUES
-(1, 'sheela', 8136877801, 'Female', '2002-12-01', 'edapal', 'sheela villa'),
+(1, 'sheela k', 8136877801, 'Female', '2000-12-01', 'edapal', 'sheela villa'),
 (2, 'Latha', 9947271346, 'Female', '1998-01-01', 'Edapal', 'Latha House'),
 (3, 'Rama', 9012345678, 'Female', '1999-01-01', 'Edapal', 'kallingal');
 
@@ -218,7 +247,7 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`pid`, `pname`, `mobile`, `dob`, `gender`, `place`, `panchayath`, `ward`, `address`, `pincode`, `disease`) VALUES
-(1, 'aslam', 9876543210, '2000-04-10', 'male', 'qwerty', 'qwerty', 5, 'qwerty', 679579, 'paraplegia'),
+(1, 'aslam k', 9876543210, '2000-04-10', 'male', 'edapal', 'edapal', 3, 'kallingal', 679576, 'paraplegia'),
 (3, 'anas k', 9865321470, '2000-04-01', 'male', 'edapal', 'edapal', 5, 'kallingal', 679576, 'paraplegia'),
 (4, 'anees', 9605314236, '2000-04-01', 'male', 'edapal', 'edapal', 5, 'anees villa', 679576, 'cancer'),
 (5, 'Aflah', 8132074560, '2000-04-23', 'male', 'edapal', 'edapal', 11, 'kallingal', 679576, 'paraplegia'),
@@ -246,7 +275,23 @@ CREATE TABLE `transport` (
 --
 
 INSERT INTO `transport` (`tid`, `equipment`, `patient`, `volunteer`, `request_id`, `tr_status`, `tr_assdate`) VALUES
-(1, 2, 1, 5, 3, 'assigned', '2021-05-20');
+(1, 2, 1, 3, 3, 'confirmed', '2021-05-20'),
+(2, 3, 3, 5, 7, 'assigned', '2021-05-21'),
+(3, 2, 4, 3, 4, 'assigned', '2021-05-21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tutorials`
+--
+
+CREATE TABLE `tutorials` (
+  `tut_id` int(5) NOT NULL,
+  `tut_name` int(20) NOT NULL,
+  `tut_url` int(150) NOT NULL,
+  `tut_description` int(150) NOT NULL,
+  `image` int(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -269,7 +314,7 @@ CREATE TABLE `volunteer` (
 --
 
 INSERT INTO `volunteer` (`vid`, `name`, `mobile`, `dob`, `place`, `panchayath`, `address`) VALUES
-(3, 'aslam', 7736918949, '1998-07-18', 'edapal', 'edapal', 'kallingal'),
+(3, 'Aslam K', 7736918949, '1998-07-18', 'edapal', 'edapal', 'kallingal'),
 (4, 'qwerty', 9567105862, '2001-04-02', 'qwerty', 'qwerty', 'qwerty'),
 (5, 'althaf', 9871234560, '2000-04-01', 'edapal', 'edapal', 'kallingal'),
 (6, 'Salman', 9879879865, '1990-04-01', 'ponnani', 'ponnani', 'kallingal');
@@ -316,6 +361,12 @@ ALTER TABLE `assign_volunteer`
   ADD PRIMARY KEY (`assv_id`),
   ADD KEY `volunteer` (`volunteer`),
   ADD KEY `assign_volunteer_ibfk_1` (`patient`);
+
+--
+-- Indexes for table `blooddonor`
+--
+ALTER TABLE `blooddonor`
+  ADD PRIMARY KEY (`bd_id`);
 
 --
 -- Indexes for table `equipments`
@@ -368,6 +419,12 @@ ALTER TABLE `transport`
   ADD KEY `request_id` (`request_id`);
 
 --
+-- Indexes for table `tutorials`
+--
+ALTER TABLE `tutorials`
+  ADD PRIMARY KEY (`tut_id`);
+
+--
 -- Indexes for table `volunteer`
 --
 ALTER TABLE `volunteer`
@@ -398,16 +455,22 @@ ALTER TABLE `assign_volunteer`
   MODIFY `assv_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
+-- AUTO_INCREMENT for table `blooddonor`
+--
+ALTER TABLE `blooddonor`
+  MODIFY `bd_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `equipments`
 --
 ALTER TABLE `equipments`
-  MODIFY `eid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `eid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `equipment_request`
 --
 ALTER TABLE `equipment_request`
-  MODIFY `req_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `req_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `login`
@@ -431,7 +494,13 @@ ALTER TABLE `patient`
 -- AUTO_INCREMENT for table `transport`
 --
 ALTER TABLE `transport`
-  MODIFY `tid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `tid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tutorials`
+--
+ALTER TABLE `tutorials`
+  MODIFY `tut_id` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `volunteer`

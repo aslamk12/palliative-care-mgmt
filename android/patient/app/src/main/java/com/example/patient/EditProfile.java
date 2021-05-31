@@ -48,6 +48,7 @@ public class EditProfile extends AppCompatActivity {
         loggedIn_pincode=patient.getPincode();
         loggedIn_panchayath=patient.getPanchayath();
         loggedIn_ward=patient.getWard();
+
         edt_name = findViewById(R.id.reg_et_name1);
         edt_address = findViewById(R.id.reg_et_hname1);
         edt_place = findViewById(R.id.reg_et_place1);
@@ -55,12 +56,14 @@ public class EditProfile extends AppCompatActivity {
         edt_panchayath = findViewById(R.id.reg_et_panchayath1);
         //edt_ward = findViewById(R.id.reg_et_ward);
         btn_upt = findViewById(R.id.update);
+
         edt_name.setText(loggedIn_name);
         edt_address.setText(loggedIn_address);
         edt_place.setText(loggedIn_place);
         edt_pincode.setText(loggedIn_pincode);
         edt_panchayath.setText(loggedIn_panchayath);
 //        edt_ward.setText(loggedIn_ward);
+
         btn_upt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,11 +113,11 @@ public class EditProfile extends AppCompatActivity {
     }
     private void updateUser()
     {
-        name = getIntent().getExtras().getString("name");
-        address = getIntent().getExtras().getString("address");
-        place = getIntent().getExtras().getString("place");
-        pincode = getIntent().getExtras().getString("pincode");
-        panchayath = getIntent().getExtras().getString("panchayath");
+        name = edt_name.getText().toString().trim();
+        address = edt_address.getText().toString().trim();
+        place = edt_place.getText().toString().trim();
+        pincode = edt_pincode.getText().toString().trim();
+        panchayath = edt_panchayath.getText().toString().trim();
         //ward = getIntent().getExtras().getString("ward");
         class UpdateUser extends AsyncTask<Void, Void, String>
         {

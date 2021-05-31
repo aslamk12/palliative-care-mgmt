@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
-    TextView patient_verify,tv_transport;
+    TextView patient_verify,tv_transport,tv_profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +17,7 @@ public class HomeActivity extends AppCompatActivity {
 
         patient_verify=(TextView)findViewById(R.id.patient_verify);
         tv_transport=(TextView)findViewById(R.id.tv_transport);
+        tv_profile=(TextView)findViewById(R.id.tv_profile);
         patient_verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -31,6 +32,15 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent regIntent = new Intent(HomeActivity.this,TransporthomeActivity.class);
+                startActivity(regIntent);
+
+            }
+        });
+        tv_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent regIntent = new Intent(HomeActivity.this,Myprofile.class);
                 startActivity(regIntent);
 
             }

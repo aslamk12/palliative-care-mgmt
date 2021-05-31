@@ -53,14 +53,14 @@ public class EditProfile extends AppCompatActivity {
         edt_place = findViewById(R.id.reg_et_place1);
         edt_pincode = findViewById(R.id.reg_et_pincode1);
         edt_panchayath = findViewById(R.id.reg_et_panchayath1);
-        edt_ward = findViewById(R.id.reg_et_ward);
+        //edt_ward = findViewById(R.id.reg_et_ward);
         btn_upt = findViewById(R.id.update);
         edt_name.setText(loggedIn_name);
         edt_address.setText(loggedIn_address);
         edt_place.setText(loggedIn_place);
         edt_pincode.setText(loggedIn_pincode);
         edt_panchayath.setText(loggedIn_panchayath);
-        edt_ward.setText(loggedIn_ward);
+//        edt_ward.setText(loggedIn_ward);
         btn_upt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,11 +98,11 @@ public class EditProfile extends AppCompatActivity {
             edt_panchayath.setError("Please enter your panchayath!");
             edt_panchayath.requestFocus();
         }
-        else if (edt_ward.getText().toString().isEmpty())
-        {
-            edt_ward.setError("Please enter your ward!");
-            edt_ward.requestFocus();
-        }
+//        else if (edt_ward.getText().toString().isEmpty())
+//        {
+//            edt_ward.setError("Please enter your ward!");
+//            edt_ward.requestFocus();
+//        }
         else
         {
             updateUser();
@@ -115,7 +115,7 @@ public class EditProfile extends AppCompatActivity {
         place = getIntent().getExtras().getString("place");
         pincode = getIntent().getExtras().getString("pincode");
         panchayath = getIntent().getExtras().getString("panchayath");
-        ward = getIntent().getExtras().getString("ward");
+        //ward = getIntent().getExtras().getString("ward");
         class UpdateUser extends AsyncTask<Void, Void, String>
         {
 
@@ -130,7 +130,7 @@ public class EditProfile extends AppCompatActivity {
                 params.put("place", place);
                 params.put("pincode", pincode);
                 params.put("panchayath", panchayath);
-                params.put("ward", ward);
+                //params.put("ward", ward);
                 params.put("pid", String.valueOf(loggedIn_user));
 
                 return requestHandler.sendPostRequest(URLs.URL_EDITPROFILE, params);

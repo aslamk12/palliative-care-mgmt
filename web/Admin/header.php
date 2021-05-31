@@ -138,7 +138,7 @@ include "../connection.php";
                         <a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Revenue</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
                             <li><a title="Sponsorships" href="add_sponsorship.php"><span class="mini-sub-pro">Sponserships</span></a></li>
-                            <li><a title="Add revenue" href="view_service_req.php"><span class="mini-sub-pro">Add Revenue</span></a></li>
+                            <li><a title="Add revenue" href="add_revenue.php"><span class="mini-sub-pro">Add Revenue</span></a></li>
                         </ul>
                     </li>
 

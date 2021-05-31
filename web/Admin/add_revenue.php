@@ -1,6 +1,6 @@
 <?php
 include "header.php";
-$sql=mysqli_query($con,"select * from sponsorship");
+$sql=mysqli_query($con,"select * from revenue");
 ?>
 <div class="header-advance-area">
 
@@ -37,7 +37,7 @@ $sql=mysqli_query($con,"select * from sponsorship");
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-payment-inner-st">
                     <ul id="myTabedu1" class="tab-review-design">
-                        <li class="active" style="margin-left: 299px"><a href="#description">Sponsorships</a></li>
+                        <li class="active" style="margin-left: 299px"><a href="#description">Revenue</a></li>
                         <li><a href="#reviews"> View Details</a></li>
                     </ul>
                     <div id="myTabContent" class="tab-content custom-product-edit">
@@ -77,29 +77,18 @@ $sql=mysqli_query($con,"select * from sponsorship");
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-left: 299px">
 
                                                         <div class="form-group">
-                                                            <label>Name</label>
-                                                            <input name="name" type="text" class="form-control" placeholder="Name" required="">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Address</label>
-                                                            <input name="address" type="text" class="form-control" placeholder="Address" required="">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Contact</label>
-                                                            <input name="mobile" type="text" onkeypress="javascript:return isNumber(event)" maxlength="10" i class="form-control" placeholder="Contact" required="" style="text-transform: capitalize">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Place</label>
-                                                            <input name="place" type="text" class="form-control" placeholder="Place" required="">
-                                                        </div>
-                                                        <div class="form-group">
                                                             <label>Date</label>
-                                                            <input name="date" type="date" class="form-control"  required="">
+                                                            <input name="date" type="date" class="form-control" required="">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label>Product/Cash</label>
-                                                            <input name="sitem" type="text" class="form-control" placeholder="Product/Cash" required="">
+                                                            <label>Income</label>
+                                                            <input name="income" type="number" class="form-control" placeholder="Income" required="">
                                                         </div>
+                                                        <div class="form-group">
+                                                            <label>Expenditure</label>
+                                                            <input name="expenditure" type="number" class="form-control" placeholder="Expenditure" required="">
+                                                        </div>
+
                                                         <div class="form-group">
                                                             <label>Description</label>
                                                             <input name="descp" type="text" class="form-control" placeholder="Description" required="">
@@ -133,22 +122,22 @@ $sql=mysqli_query($con,"select * from sponsorship");
                                 <?php
                                 if(isset($_POST['sub']))
                                 {
-                                    $name=$_POST['name'];
-                                    $address=$_POST['address'];
-                                    $mobile=$_POST['mobile'];
-                                    $place=$_POST['place'];
+                                    $income=$_POST['income'];
+                                    $expenditure=$_POST['expenditure'];
                                     $date=$_POST['date'];
-                                    $sitem=$_POST['sitem'];
                                     $descp=$_POST['descp'];
+                                    $inc=(int)$income;
+                                    $exp=(int)$expenditure;
+                                    $total=$inc-$exp;
 
 
-                                    $sql = mysqli_query($con, "insert into sponsorship(sp_name,sp_address,sp_mobile,sp_place,sp_date,sp_item,sp_descp)VALUES ('$name','$address','$mobile','$place','$date','$sitem','$descp')");
+                                    $sql = mysqli_query($con, "insert into revenue(rv_date,rv_income,rv_expend,rv_descp,rv_total)VALUES ('$date','$income','$expenditure','$descp','$total')");
                                     if ($sql) {
                                         echo "<script>alert('Details Added')</script>";
-                                        echo "<script>window.location.href='add_sponsorship.php'</script>";
+                                        echo "<script>window.location.href='add_revenue.php'</script>";
                                     } else {
                                         echo "<script>alert('Error,Try again')</script>";
-                                        echo "<script>window.location.href='add_sponsorship.php'</script>";
+                                        echo "<script>window.location.href='add_revenue.php'</script>";
 
                                     }
                                 }
@@ -164,19 +153,17 @@ $sql=mysqli_query($con,"select * from sponsorship");
                                                 <div class="row">
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="product-status-wrap">
-                                                            <h4>Blood Donor List</h4>
+                                                            <h4>Revenue</h4>
 
                                                             <div class="asset-inner">
                                                                 <table>
                                                                     <tr>
                                                                         <th>No</th>
-                                                                        <th>Sponsor Name</th>
-                                                                        <th>Address</th>
-                                                                        <th>Contact</th>
-                                                                        <th>Place</th>
                                                                         <th>Date</th>
-                                                                        <th>Sponsored Item/Cash</th>
+                                                                        <th>Income</th>
+                                                                        <th>Expenditure</th>
                                                                         <th>Description</th>
+                                                                        <th>Total</th>
                                                                         <th>Delete</th>
                                                                     </tr>
                                                                     <?php
@@ -185,15 +172,13 @@ $sql=mysqli_query($con,"select * from sponsorship");
                                                                         ?>
                                                                         <tr>
                                                                             <td><?php echo $i ?></td>
-                                                                            <td><?php echo $ro['sp_name'] ?></td>
-                                                                            <td><?php echo $ro['sp_address'] ?></td>
-                                                                            <td><?php echo $ro['sp_mobile'] ?></td>
-                                                                            <td><?php echo $ro['sp_place'] ?></td>
-                                                                            <td><?php echo date('d M Y',strtotime($ro['sp_date'])) ?></td>
-                                                                            <td><?php echo $ro['sp_item'] ?></td>
-                                                                            <td><?php echo $ro['sp_descp'] ?></td>
+                                                                            <td><?php echo date('d M Y',strtotime($ro['rv_date'])) ?></td>
+                                                                            <td><?php echo $ro['rv_income'] ?></td>
+                                                                            <td><?php echo $ro['rv_expend'] ?></td>
+                                                                            <td><?php echo $ro['rv_descp'] ?></td>
+                                                                            <td><?php echo $ro['rv_total'] ?></td>
                                                                             <td>
-                                                                                <a href="delete_sponsorship.php?spid=<?php echo $ro['sp_id'] ?>" data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true" style="font-size: 40px"></i></a>
+                                                                                <a href="delete_revenue.php?rvid=<?php echo $ro['rv_id'] ?>" data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true" style="font-size: 40px"></i></a>
                                                                             </td>
                                                                         </tr>
                                                                         <?php

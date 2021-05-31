@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 31, 2021 at 10:10 AM
+-- Generation Time: May 31, 2021 at 10:58 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -257,6 +257,28 @@ INSERT INTO `patient` (`pid`, `pname`, `mobile`, `dob`, `gender`, `place`, `panc
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `revenue`
+--
+
+CREATE TABLE `revenue` (
+  `rv_id` int(11) NOT NULL,
+  `rv_date` date NOT NULL,
+  `rv_income` int(10) NOT NULL,
+  `rv_expend` int(10) NOT NULL,
+  `rv_descp` varchar(50) NOT NULL,
+  `rv_total` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `revenue`
+--
+
+INSERT INTO `revenue` (`rv_id`, `rv_date`, `rv_income`, `rv_expend`, `rv_descp`, `rv_total`) VALUES
+(2, '2021-05-01', 15000, 2500, 'bfxFdfcx', 12500);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sponsorship`
 --
 
@@ -433,6 +455,12 @@ ALTER TABLE `patient`
   ADD PRIMARY KEY (`pid`);
 
 --
+-- Indexes for table `revenue`
+--
+ALTER TABLE `revenue`
+  ADD PRIMARY KEY (`rv_id`);
+
+--
 -- Indexes for table `sponsorship`
 --
 ALTER TABLE `sponsorship`
@@ -519,6 +547,12 @@ ALTER TABLE `nurse`
 --
 ALTER TABLE `patient`
   MODIFY `pid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `revenue`
+--
+ALTER TABLE `revenue`
+  MODIFY `rv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `sponsorship`

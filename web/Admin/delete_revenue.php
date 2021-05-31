@@ -7,12 +7,12 @@
 //}
 include "../connection.php";
 
-$sp_id=$_GET['spid'];
-$del=mysqli_query($con,"delete from sponsorship where sp_id='$sp_id'");
+$rv_id=$_GET['rvid'];
+$del=mysqli_query($con,"delete from revenue where rv_id='$rv_id'");
 if($del)
 {
     echo "<script>alert('Deleted')</script>";
-    echo "<script>window.location.href='add_sponsorship.php'</script>";
+    echo "<script>window.location.href='add_revenue.php'</script>";
 }
 ?>
 

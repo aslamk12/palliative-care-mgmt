@@ -1,20 +1,16 @@
 <?php
 include "header.php";
-$k=$_GET['id'];
-$nm1=mysqli_query($con,"select * from patient inner join equipment_request on patient.pid=equipment_request.patient where equipment_request.req_id='$k' ");
-while ($rw4=mysqli_fetch_array($nm1))
+$k=$_GET['volid'];
+$nm=mysqli_query($con,"select * from volunteer where mobile='$k' ");
+while ($rw4=mysqli_fetch_array($nm))
 {
-    $pname=$rw4['pname'];
-    $pid=$rw4['pid'];
+    $name=$rw4['name'];
 }
-$nm2=mysqli_query($con,"select * from equipments inner join equipment_request on equipments.eid=equipment_request.equipment where equipment_request.req_id='$k' ");
-while ($rw5=mysqli_fetch_array($nm2))
+$sel=mysqli_query($con,"select * from login where uname='$k'");
+while ($rw=mysqli_fetch_array($sel))
 {
-    $ename=$rw5['e_name'];
-    $eid=$rw5['eid'];
+    $l_id=$rw['login_id'];
 }
-$vol=mysqli_query($con,"select * from volunteer inner join login on volunteer.mobile=login.uname where login.status='approved'");
-
 ?>
 <!-- Mobile Menu end -->
 <div class="breadcome-area">
@@ -30,8 +26,8 @@ $vol=mysqli_query($con,"select * from volunteer inner join login on volunteer.mo
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
-                                <li>Equipment</a> <span class="bread-slash">/</span></li>
-                                <li><span class="bread-blod">Assign Transport</span></li>
+                                <li>Volunteer</a> <span class="bread-slash">/</span></li>
+                                <li><span class="bread-blod">Send Message</span></li>
                             </ul>
                         </div>
                     </div>
@@ -46,7 +42,7 @@ $vol=mysqli_query($con,"select * from volunteer inner join login on volunteer.mo
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-status-wrap">
-                    <h4>Assign Transport</h4>
+                    <h4>Send Message</h4>
 
                     <div class="asset-inner">
                         <div class="row">
@@ -56,27 +52,22 @@ $vol=mysqli_query($con,"select * from volunteer inner join login on volunteer.mo
                                         <f class="sparkline13-graph">
                                             <div class="datatable-dashv1-list custom-datatable-overright">
                                                 <div class="form-group-inner">
-                                                    <label>Patient ID</label>
-                                                    <input readonly class="form-control" value="<?php echo $pid?>" style="text-transform: capitalize;background-color:transparent;" />
+                                                    <label>Volunteer Name</label>
+                                                    <input readonly class="form-control" value="<?php echo $name?>" style="text-transform: capitalize;background-color:transparent;" />
                                                 </div>
                                                 <div class="form-group-inner">
-                                                    <label>Patient Name</label>
-                                                    <input readonly class="form-control" value="<?php echo $pname?>" style="text-transform: capitalize;background-color:transparent;" />
+                                                    <label>Volunteer Contact</label>
+                                                    <input name="contact" type="text" class="form-control" value="<?php echo $k?>" placeholder="" required="">
+<!--                                                    <input readonly class="form-control" name="contact" value="--><?php //echo $k?><!--" style="text-transform: capitalize;background-color:transparent;" />-->
                                                 </div>
                                                 <div class="form-group-inner">
-                                                    <label>Equipment Name</label>
-                                                    <input readonly class="form-control" value="<?php echo $ename?>" style="text-transform: capitalize;background-color:transparent;" />
+                                                    <label> Message </label>
+                                                    <input name="message" type="text" class="form-control" placeholder="Message" required="">
                                                 </div>
-                                                <select name="volunteer"  class="form-control" id="select1">
-                                                    <option disabled selected>~ Select Volunteer ~</option>
-                                                    <?php while ($rw_vol=mysqli_fetch_array($vol)){ ?>
-                                                        <option value="<?php echo $rw_vol[0]?>"><?php echo $rw_vol[1] ?></option>
-                                                    <?php }?>
 
-                                                </select>
                                                 <br/>
                                                 <br/>
-                                                <center><button id="send" type="submit" name="assign" class="btn btn-primary waves-effect waves-light" style="text-transform: uppercase">ASSIGN</button></center>
+                                                <center><button id="send" type="submit" name="send" class="btn btn-primary waves-effect waves-light" style="text-transform: uppercase">SEND</button></center>
                                             </div>
                                     </form>
                                 </div>
@@ -93,27 +84,20 @@ $vol=mysqli_query($con,"select * from volunteer inner join login on volunteer.mo
 </div>
 </div>
 <?php
-if(isset($_POST['assign']))
-{
-    $volunteer=$_POST['volunteer'];
-
-    $aDate = date('Y-m-d');
-    $sts= 'assigned';
-
-
-    $ins="insert into transport (equipment,patient,volunteer,request_id,tr_status,tr_assdate) values('$eid','$pid','$volunteer','$k','$sts','$aDate')";
-    $sq=mysqli_query($con,$ins);
-    if($sq)
+if(isset($_POST['send'])) {
+    $contact = $_POST['contact'];
+    $msg = $_POST['message'];
+    $upt=mysqli_query($con,"update login set status='rejected' where login_id='$l_id'");
+    if($upt)
     {
-        $upt=mysqli_query($con,"update equipment_request set status='assigned' where req_id='$k'");
-
-        echo "<script>alert('SUCCESS')</script>";
-        echo "<script>window.location.href='view_equiprequest.php'</script>";
+        $api_url = 'https://www.fast2sms.com/dev/bulkV2?authorization=f5z8DAGiS7Q0exVjqrKvtnOo6Wg4RXdECJL3YIZmFpT2wNa9ku8g6EU1CdXO4JB90INDYaPRxcWflnT5&route=q&message='.rawurlencode($msg).'&language=english&flash=0&numbers='.$contact;
+        $send = file_get_contents($api_url);
+        echo "<script>window.location.href='manage_volunteer.php'</script>";
     }
     else
     {
         echo "<script>alert('FAILED')</script>";
-        echo "<script>window.location.href='view_equiprequest.php'</script>";
+        echo "<script>window.location.href='manage_volunteer.php'</script>";
     }
 } ?>
 
@@ -151,4 +135,5 @@ include "footer.php";
 </body>
 
 </html>
+
 

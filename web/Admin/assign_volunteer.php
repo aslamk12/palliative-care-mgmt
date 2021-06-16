@@ -5,6 +5,7 @@ $nm=mysqli_query($con,"select * from patient where mobile='$k' ");
 while ($rw4=mysqli_fetch_array($nm))
 {
     $name=$rw4['pname'];
+    $pid=$rw4['pid'];
 }
 $vol=mysqli_query($con,"select * from volunteer inner join login on volunteer.mobile=login.uname where login.status='approved'");
 
@@ -48,6 +49,10 @@ $vol=mysqli_query($con,"select * from volunteer inner join login on volunteer.mo
                                         <form method="post">
                                             <f class="sparkline13-graph">
                                               <div class="datatable-dashv1-list custom-datatable-overright">
+                                                  <div class="form-group-inner">
+                                                      <label>Patient ID</label>
+                                                      <input readonly class="form-control" value="<?php echo $pid?>" style="text-transform: capitalize;background-color:transparent;" />
+                                                  </div>
                                                   <div class="form-group-inner">
                                                       <label>Patient Name</label>
                                                       <input readonly class="form-control" value="<?php echo $name?>" style="text-transform: capitalize;background-color:transparent;" />

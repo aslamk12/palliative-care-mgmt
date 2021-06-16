@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 31, 2021 at 11:17 AM
+-- Generation Time: Jun 16, 2021 at 05:07 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -111,8 +111,7 @@ CREATE TABLE `equipments` (
 
 INSERT INTO `equipments` (`eid`, `e_name`, `e_stock`, `e_date`, `image`, `description`) VALUES
 (2, 'wheelchairs', 18, '2021-05-07', '1621492338.jpg', 'very good equipments'),
-(3, 'water bed', 5, '2021-05-02', '1621492462.jpg', 'abcdefg'),
-(9, 'abcd', 4, '2021-05-15', '1621580247.jpg', 'good condition');
+(3, 'water bed', 5, '2021-05-02', '1621492462.jpg', 'abcdefg');
 
 -- --------------------------------------------------------
 
@@ -160,7 +159,6 @@ CREATE TABLE `login` (
 INSERT INTO `login` (`login_id`, `uname`, `password`, `type`, `status`) VALUES
 (1, 'admin@gmail.com', 'admin123', 'admin', ''),
 (4, '7736918949', 'aslam123', 'volunteer', 'approved'),
-(5, '9567105862', 'qwerty', 'volunteer', 'pending'),
 (6, '9876543210', 'aslam1234', 'patient', 'approved'),
 (8, '9865321470', 'anas123', 'patient', 'approved'),
 (9, '9871234560', 'althaf123', 'volunteer', 'approved'),
@@ -171,7 +169,8 @@ INSERT INTO `login` (`login_id`, `uname`, `password`, `type`, `status`) VALUES
 (15, '9947271346', '12345678', 'nurse', 'approved'),
 (16, '9988776655', 'ansah123', 'patient', 'assigned'),
 (17, '9879879865', 'salman123', 'volunteer', 'approved'),
-(18, '9012345678', '12345678', 'nurse', 'approved');
+(18, '9012345678', '12345678', 'nurse', 'approved'),
+(19, '9996663330', 'akshay123', 'volunteer', 'rejected');
 
 -- --------------------------------------------------------
 
@@ -274,7 +273,12 @@ CREATE TABLE `revenue` (
 --
 
 INSERT INTO `revenue` (`rv_id`, `rv_date`, `rv_income`, `rv_expend`, `rv_descp`, `rv_total`) VALUES
-(2, '2021-05-01', 15000, 2500, 'bfxFdfcx', 12500);
+(2, '2021-05-01', 15000, 2500, 'bfxFdfcx', 12500),
+(3, '2021-05-02', 3500, 1200, 'nothing', 2300),
+(4, '2021-05-03', 5000, 3000, 'nothing', 2000),
+(5, '2021-06-04', 3500, 1200, 'nothing', 2300),
+(6, '2021-06-01', 12500, 4000, 'nothing', 8500),
+(7, '2021-05-04', 7000, 2500, 'nothing', 4500);
 
 -- --------------------------------------------------------
 
@@ -343,7 +347,8 @@ CREATE TABLE `tutorials` (
 --
 
 INSERT INTO `tutorials` (`tut_id`, `tut_name`, `tut_url`, `tut_description`) VALUES
-(1, 'pen making', 'https://www.youtube.com/watch?v=7ZTPFy65MXU', 'How to make paper pen very easly in malayalam paper pen making');
+(2, 'pen making', '7ZTPFy65MXU', 'How to make paper pen very easly in malayalam paper pen making'),
+(3, 'Soap making', 'LkzLwawJnfE', 'Malayalam Soap making video tutorial');
 
 -- --------------------------------------------------------
 
@@ -367,9 +372,9 @@ CREATE TABLE `volunteer` (
 
 INSERT INTO `volunteer` (`vid`, `name`, `mobile`, `dob`, `place`, `panchayath`, `address`) VALUES
 (3, 'Aslam K', 7736918949, '1998-07-18', 'edapal', 'edapal', 'kallingal'),
-(4, 'qwerty', 9567105862, '2001-04-02', 'qwerty', 'qwerty', 'qwerty'),
 (5, 'althaf', 9871234560, '2000-04-01', 'edapal', 'edapal', 'kallingal'),
-(6, 'Salman', 9879879865, '1990-04-01', 'ponnani', 'ponnani', 'kallingal');
+(6, 'Salman', 9879879865, '1990-04-01', 'ponnani', 'ponnani', 'kallingal'),
+(7, 'akshay', 9996663330, '2000-06-03', 'edapal', 'edapal', 'kallingal');
 
 -- --------------------------------------------------------
 
@@ -392,7 +397,8 @@ CREATE TABLE `work_report` (
 
 INSERT INTO `work_report` (`wr_id`, `nurse`, `patient`, `date`, `medicines`, `report`) VALUES
 (1, 1, 1, '2021-04-28', 'abcdrfg', 'bandages changed'),
-(4, 1, 4, '2021-04-29', 'Medcine1111', 'Bandages Changed');
+(4, 1, 4, '2021-04-29', 'Medcine1111', 'Bandages Changed'),
+(5, 1, 1, '2021-06-15', 'gff', 'dscfffff');
 
 --
 -- Indexes for dumped tables
@@ -528,7 +534,7 @@ ALTER TABLE `blooddonor`
 -- AUTO_INCREMENT for table `equipments`
 --
 ALTER TABLE `equipments`
-  MODIFY `eid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `eid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `equipment_request`
@@ -540,7 +546,7 @@ ALTER TABLE `equipment_request`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `login_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `login_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `nurse`
@@ -558,7 +564,7 @@ ALTER TABLE `patient`
 -- AUTO_INCREMENT for table `revenue`
 --
 ALTER TABLE `revenue`
-  MODIFY `rv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `rv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `sponsorship`
@@ -576,19 +582,19 @@ ALTER TABLE `transport`
 -- AUTO_INCREMENT for table `tutorials`
 --
 ALTER TABLE `tutorials`
-  MODIFY `tut_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `tut_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `volunteer`
 --
 ALTER TABLE `volunteer`
-  MODIFY `vid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `vid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `work_report`
 --
 ALTER TABLE `work_report`
-  MODIFY `wr_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `wr_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

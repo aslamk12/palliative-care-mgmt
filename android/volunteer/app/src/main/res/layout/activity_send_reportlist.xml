@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SendReportlistActivity">
+    tools:context=".SendReportlistActivity"
+    android:background="@drawable/volunteerbg1">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_sendreportlist"
         android:layout_width="match_parent"

@@ -5,6 +5,7 @@ $nm=mysqli_query($con,"select * from patient where mobile='$k' ");
 while ($rw4=mysqli_fetch_array($nm))
 {
     $name=$rw4['pname'];
+    $pid=$rw4['pid'];
 }
 $nurs=mysqli_query($con,"select * from nurse inner join login on nurse.mobile=login.uname where login.status='approved'");
 
@@ -49,9 +50,14 @@ $nurs=mysqli_query($con,"select * from nurse inner join login on nurse.mobile=lo
                                         <f class="sparkline13-graph">
                                             <div class="datatable-dashv1-list custom-datatable-overright">
                                                 <div class="form-group-inner">
+                                                    <label>Patient ID</label>
+                                                    <input readonly class="form-control" value="<?php echo $pid?>" style="text-transform: capitalize;background-color:transparent;" />
+                                                </div>
+                                                <div class="form-group-inner">
                                                     <label>Patient Name</label>
                                                     <input readonly class="form-control" value="<?php echo $name?>" style="text-transform: capitalize;background-color:transparent;" />
                                                 </div>
+                                                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
                                                 <select name="nurse"  class="form-control" id="select1">
                                                     <option disabled selected>~ Select Nurse ~</option>
                                                     <?php while ($rw_nur=mysqli_fetch_array($nurs)){ ?>

@@ -25,13 +25,15 @@
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:layout_margin="15dp"
-        android:layout_below="@+id/tv_Title">
+        android:layout_below="@+id/tv_Title"
+        >
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/patientbg">
 
         <TextView
             android:id="@+id/tv_med_pat"

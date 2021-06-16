@@ -32,11 +32,10 @@ include "header.php";
 </div>
 
 <?php
-/*$nrs=mysqli_query($con,"select * from nurse");
-$wrk=mysqli_query($con,"select * from asha_worker");
-$vol=mysqli_query($con,"select * from course_registration");
-$pat=mysqli_query($con,"select * from registration");
-$spo=mysqli_query($con,"select * from sponser_reg WHERE status='Requested'");*/
+$nrs=mysqli_query($con,"select * from nurse");
+$vol=mysqli_query($con,"select * from volunteer");
+$eqp=mysqli_query($con,"select * from equipments");
+$pat=mysqli_query($con,"select * from patient");
 
 ?>
 
@@ -55,50 +54,42 @@ $spo=mysqli_query($con,"select * from sponser_reg WHERE status='Requested'");*/
                     <div class="analytics-sparkle-line reso-mg-b-30">
                         <div class="analytics-content">
                             <h5> Registered</h5>
-                            <h2>Nurse :<span class="counter" style="color: #006DF0"><?php //echo $count_nrs=mysqli_num_rows($nrs); ?></span> </h2>
+                            <h2>Nurse :<span class="counter" style="color: #006DF0"><?php echo $count_nrs=mysqli_num_rows($nrs); ?></span> </h2>
                         </div>
                     </div>
                 </div></a>
 
-                <a href="add_worker.php">
+                <a href="add_facility.php">
                 <div class="col-lg-3" style="width: 20%;">
                     <div class="analytics-sparkle-line reso-mg-b-30">
                         <div class="analytics-content">
                             <h5>Registered </h5>
-                            <h2>Equipments :<span class="counter" style="color: #933EC5"><?php //echo $count_wrk=mysqli_num_rows($wrk) ?></span> </h2>
+                            <h2>Equipments :<span class="counter" style="color: #933EC5"><?php echo $count_wrk=mysqli_num_rows($eqp) ?></span> </h2>
                         </div>
                     </div>
                 </div></a>
 
-                <a href="view_volunteer.php">
+                <a href="manage_volunteer.php">
                 <div class="col-lg-3" style="width: 20%;">
                     <div class="analytics-sparkle-line reso-mg-b-30 table-mg-t-pro dk-res-t-pro-30">
                         <div class="analytics-content">
                             <h5>Registered </h5>
-                            <h2>Volunteers :<span class="counter" style="color: #65b12d"><?php //echo $count_vol=mysqli_num_rows($vol) ?></span> </h2>
+                            <h2>Volunteers :<span class="counter" style="color: #65b12d"><?php echo $count_vol=mysqli_num_rows($vol) ?></span> </h2>
                         </div>
                     </div>
                 </div></a>
 
-                <a href="All_patient.php">
+                <a href="view_patient.php">
                 <div class="col-lg-3" style="width: 20%;">
                     <div class="analytics-sparkle-line table-mg-t-pro dk-res-t-pro-30">
                         <div class="analytics-content">
                             <h5>Registered </h5>
-                            <h2>Patients :<span class="counter" style="color:#ffb463 "><?php //echo $count_pat=mysqli_num_rows($pat) ?></span></h2>
+                            <h2>Patients :<span class="counter" style="color:#ffb463 "><?php echo $count_pat=mysqli_num_rows($pat) ?></span></h2>
                         </div>
                     </div>
                 </div></a>
 
-                <a href="view_sponsor_request.php">
-                <div class="col-lg-3" style="width: 20%;">
-                    <div class="analytics-sparkle-line table-mg-t-pro dk-res-t-pro-30">
-                        <div class="analytics-content">
-                            <!--<h5>Sponsors</h5>
-                            <h2>Requests :<span class="counter" style="color: #D80027"><?php //echo $count_spo=mysqli_num_rows($spo) ?></span></h2>-->
-                        </div>
-                    </div>
-                </div></a>
+
 
             </div>
         </div>

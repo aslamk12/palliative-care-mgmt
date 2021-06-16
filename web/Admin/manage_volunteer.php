@@ -86,7 +86,7 @@ $sql=mysqli_query($con,"select * from volunteer");
                                                             </td>
 
                                                             <td>
-                                                                <a href="delete_volunteer.php?volid=<?php echo $row['mobile'] ?>"
+                                                                <a href="send_msg.php?volid=<?php echo $row['mobile'] ?>"
                                                                    data-toggle="tooltip" title="Edit" class="pd-setting-ed"><img src="img/delet.png"
                                                                                                                                  style="height: 30px;width: 35px;"></a>
                                                             </td>

@@ -121,7 +121,7 @@ include "../connection.php";
                         <a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Patient</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
                             <li><a title="Patient's Facility Request" href="view_patient.php"><span class="mini-sub-pro">View Request</span></a></li>
-                            <li><a title="Patient's Service Request" href="view_app_patient.php"><span class="mini-sub-pro">Assign Nurse</span></a></li>
+                            <li><a title="Patient's Service Request" href="view_app_patient.php"><span class="mini-sub-pro">Approved Patients</span></a></li>
                         </ul>
                     </li>
 
@@ -139,10 +139,11 @@ include "../connection.php";
                         <ul class="submenu-angle" aria-expanded="false">
                             <li><a title="Sponsorships" href="add_sponsorship.php"><span class="mini-sub-pro">Sponserships</span></a></li>
                             <li><a title="Add revenue" href="add_revenue.php"><span class="mini-sub-pro">Add Revenue</span></a></li>
+                            <li><a title="Generate Balance Sheet" href="balance_sheet.php"><span class="mini-sub-pro">BalanceSheet</span></a></li>
                         </ul>
                     </li>
 
-                    <li><a title="Satff Reports" href="report_select.php"><span class="educate-icon educate-library icon-wrap sub-icon-mg"></span><span class="mini-click-non">Reports</span></a></li>
+                    <li><a title="Satff Reports" href="view_reports.php"><span class="educate-icon educate-library icon-wrap sub-icon-mg"></span><span class="mini-click-non">Reports</span></a></li>
 
                     <li>
                         <a  href="logout.php" aria-expanded="false"><span class="educate-icon educate-settings icon-wrap"></span> <span class="mini-click-non">Logout</span></a>

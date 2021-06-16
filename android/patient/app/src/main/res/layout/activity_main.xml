@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,19 +54,46 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/steth">
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MOBILE      :"
+            android:textColor="@color/dark_blue"
+            android:textSize="25dp"
+            android:textStyle="bold"/>
         <EditText
             android:id="@+id/et_number"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="MOBILE NUMBER"
             android:inputType="number"/>
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PASSWORD:"
+            android:textColor="@color/dark_blue"
+            android:textSize="25dp"
+            android:textStyle="bold"/>
         <EditText
             android:id="@+id/et_pasword"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="PASSWORD"
             android:inputType="textPassword"/>
+        </LinearLayout>
         <Button
             android:id="@+id/btn_login"
             android:layout_marginTop="40dp"
